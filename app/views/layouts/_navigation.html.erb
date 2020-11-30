@@ -12,7 +12,7 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="user-name nav-item">
-          <%= fa_icon 'user' %> 
+          <%= fa_icon 'user' %> <%= link_to current_user.full_name, edit_user_registration_path, class:'name' %> 
         </li>
         <li class="log-out nav-item">
           <%= link_to("Logout", destroy_user_session_path,
