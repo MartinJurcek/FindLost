@@ -1,0 +1,27 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+*body {
+  padding: 0;
+  margin: 0;
+}
+
+#search-line {
+  text-align: center;
+}
+
+.navbar-brand {
+  font-size: 30px;
+}
+
+.navbar {
+  background-color: rgb(92, 92, 92) !important;
+}
+
+.user-name {
+  padding: 8px;
+  margin-right: 20px;
+}
+
+#messages-container {
+  
+}
