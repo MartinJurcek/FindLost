@@ -27,7 +27,7 @@ class StuffsController < ApplicationController
   # POST /stuffs.json
   def create
     @stuff = Stuff.new(stuff_params)
-    @stuff.user = current_user
+
     respond_to do |format|
       if @stuff.save
         format.html { redirect_to @stuff, notice: 'Stuff was successfully created.' }

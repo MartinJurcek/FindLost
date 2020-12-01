@@ -8,7 +8,7 @@
 #search-line {
   text-align: center;
 }
-
+//navigation
 .navbar-brand {
   font-size: 30px;
 }
@@ -22,10 +22,6 @@
   margin-right: 20px;
 }
 
-#messages-container {
-  
-}
-
 .name {
   color: rgb(22, 21, 21);
 }
@@ -33,3 +29,11 @@
   color: grey;
   text-decoration: none;
 }
+
+
+//flash message for stuffs
+.alert ul li {
+  list-style-type: none;
+  justify-content: center;
+}
+
