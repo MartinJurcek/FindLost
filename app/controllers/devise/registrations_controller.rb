@@ -35,6 +35,7 @@ class Devise::RegistrationsController < DeviseController
 
   # GET /resource/edit
   def edit
+    @stuffs = @user.stuffs
     render :edit
   end
 
