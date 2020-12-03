@@ -15,5 +15,8 @@
   <%= @stuff.found_date %>
 </p>
 
-<%= link_to 'Edit', edit_stuff_path(@stuff) %> |
+<% if user_signed_in? && (@stuff.user == current_user || current_user.admin?) %>
+  <%= link_to 'Edit', edit_stuff_path(@stuff) %>
+<% end %> 
+
 <%= link_to 'Back', stuffs_path %>

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
                    confirmations: "devise/confirmations",
                  }
   resources :stuffs
-  resources :show_users, only: [:index]
+  resources :show_users
   root to: "stuffs#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

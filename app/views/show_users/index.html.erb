@@ -3,6 +3,9 @@
     <%= user.username %><br/>
     <%= user.email %><br/>
     <%= link_to 'Edit user', edit_user_registration_path(user) %><br/>
+    <% if current_user.admin? %>
+      <%= link_to 'Destroy', show_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %><br/>
+    <% end %>
     <small>Joined <%= time_ago_in_words(user.created_at) %> ago</small>
   <br/><br/>
   <% end %>
