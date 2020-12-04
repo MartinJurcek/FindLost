@@ -37,3 +37,38 @@
   justify-content: center;
 }
 
+
+//styling for devise form
+.wrapper {
+  margin: 80px;
+}
+.form-signin {
+  max-width: 380px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 15px 40px 50px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.form-signin .form-signin-heading, .form-signin .checkbox {
+  margin-bottom: 30px;
+}
+#edit-devise-container{
+  max-width: 500px;
+}
+ 
+
+//navbar icon
+.bg-iconnav {
+  background:#ffc107;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #ffc107 0%, #ffc107 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #ffc107 0%, #e6366c 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #ffc107 0%, #e6366c 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc107', endColorstr='#e6366c', GradientType=0);
+  /* IE6-9 */
+  border-radius: 0;
+}

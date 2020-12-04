@@ -1,9 +1,8 @@
 class StuffsController < ApplicationController
   before_action :set_stuff, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:show, :new]
-  
-  before_action :require_user, except: [:index, :search]  
-  before_action :require_same_user, only: [:edit, :update, :destroy]
+  #before_action :require_user, except: [:index, :search]  //without devise gem
+  #before_action :require_same_user, only: [:edit, :update, :destroy] //without devise gem
 
 
   # GET /stuffs
@@ -77,10 +76,10 @@ class StuffsController < ApplicationController
       params.require(:stuff).permit(:title, :description, :found_date)
     end
 
-    def require_same_user
-      if current_user != @stuff.user && !current_user.admin?
-        flash[:alert] = "You can only delete or edit your own stuff"
-        redirect_to @stuff
-      end
-    end
+    #def require_same_user
+    #  if current_user != @stuff.user && !current_user.admin?
+    #    flash[:alert] = "You can only delete or edit your own stuff"
+    #    redirect_to @stuff
+    #  end
+    #end
 end

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-xl py-3 navbar-light bg-light" id="navbar">
-<%= link_to "FindLost", root_path, class:"navbar-brand text-warning" %>
+  <%= link_to "FindLost", root_path, class:"navbar-brand text-warning" %>
   <% if current_user %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler custom-toggler bg-iconnav rounded" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
