@@ -69,11 +69,11 @@ class Devise::PasswordsController < DeviseController
 
     # Check if proper Lockable module methods are present & unlock strategy
     # allows to unlock resource on password reset
-    #def unlockable?(resource)
-    #  resource.respond_to?(:unlock_access!) &&
-    #    resource.respond_to?(:unlock_strategy_enabled?) &&
-    #    resource.unlock_strategy_enabled?(:email)
-    #end
+    def unlockable?(resource)
+      resource.respond_to?(:unlock_access!) &&
+        resource.respond_to?(:unlock_strategy_enabled?) &&
+        resource.unlock_strategy_enabled?(:email)
+    end
 
     def translation_scope
       'devise.passwords'
