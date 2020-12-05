@@ -11,6 +11,12 @@
   </div>
 
   <div class="field">
+    <%= form.label :category, "Select category" %>
+    <%= form.collection_select(:category_ids, Category.all, :id, :category_name,
+            {prompt: false}, { multiple: true, size: 1, class:"custom-select" }) %>
+  </div>
+
+  <div class="field">
     <%= form.label :found_date %>
     <%= form.date_select :found_date %>
   </div>

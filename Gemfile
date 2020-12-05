@@ -25,6 +25,7 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'devise-i18n'
 gem "font-awesome-rails"
+gem 'jquery-rails'
 
 
 # Use Active Storage variant

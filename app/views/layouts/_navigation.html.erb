@@ -46,16 +46,18 @@
         </ul>
       <% end %>
     </div>
-  <% if not user_signed_in? %>
-    <ul class="navbar-nav ml-auto">
-      <li class="log-in nav-item">
-        <%= link_to("Login", new_user_session_path,
-            class:"btn btn-xs text-warning signin-button") %>
-      </li>
-      <li class="log-in nav-item text-muted">
-        <%= link_to("Sign up", new_user_registration_path,
-            class:"btn btn-xs text-warning signup-button") %>
-      </li>
-    </ul>
-  <% end %> 
+   
+    <% if not user_signed_in? %>
+      <ul class="navbar-nav ml-auto">
+        <li class="log-in nav-item">
+          <%= link_to("Login", new_user_session_path,
+              class:"btn btn-xs text-warning signin-button") %>
+        </li>
+        <li class="log-in nav-item text-muted">
+          <%= link_to("Sign up", new_user_registration_path,
+              class:"btn btn-xs text-warning signup-button") %>
+        </li>
+      </ul>
+    <% end %> 
+  
 </nav>
