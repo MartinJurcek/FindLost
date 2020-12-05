@@ -74,7 +74,7 @@ class StuffsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def stuff_params
-      params.require(:stuff).permit(:title, :description, :found_date, category_ids: [])
+      params.require(:stuff).permit(:title, :description, :found_date, :category_ids)
     end
 
     #def require_same_user
