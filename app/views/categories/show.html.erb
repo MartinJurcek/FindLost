@@ -1,1 +1,13 @@
-<%= @category.category_name %>
+<h1 class="text-center">Category: <%= @category.category_name %></h1>
+
+<% if user_signed_in? && current_user.admin? %>
+  <div class="text-center mt-4">
+    <%= link_to "Edit category name", edit_category_path(@category), class: "btn btn-outline-info" %>
+  </div>
+<% end %>
+
+<%= render 'stuffs/stuffs'%>
+
+<div class="text-center">
+  <%= link_to 'Cancel and return to categories listing', categories_path %>
+</div>

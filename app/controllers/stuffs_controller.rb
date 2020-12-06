@@ -28,7 +28,6 @@ class StuffsController < ApplicationController
   # POST /stuffs
   # POST /stuffs.json
   def create
-    byebug
     @stuff = Stuff.new(stuff_params)
     @stuff.user = current_user
     respond_to do |format|

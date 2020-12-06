@@ -4,7 +4,7 @@
   <div class="wrapper">
     <div class="form-signin shadow">
 
-    <h1 class="text-center">Create category</h1>
+    <h1 class="text-center">Edit category name</h1>
 
     <div class="form-group">
       <%= form.label :category_name %>
@@ -14,5 +14,12 @@
     <div class="form-group">
       <%= form.submit class: "submit-btn", class: 'btn btn-primary' %>
     </div>
+
+    <div class="dropdown-divider"></div>
+
+    <div class="text-center">
+      <%= link_to 'Cancel and return to categories listing', categories_path %>
+    </div>
   </div>
 <% end %>
+
