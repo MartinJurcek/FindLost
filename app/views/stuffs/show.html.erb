@@ -5,6 +5,10 @@
   <%= @stuff.title %>
 </p>
 
+<div style="width:400px; height:auto">
+  <%= image_tag(@stuff.image, style:'width:100%') if @stuff.image.attached? %>
+</div>
+
 <p>
   <strong>Description:</strong>
   <%= @stuff.description %>
