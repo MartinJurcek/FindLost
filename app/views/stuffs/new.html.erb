@@ -12,20 +12,18 @@
       <%= form.label :description %>
       <%= form.text_area :description %>
     </div>
-
     
-        <div class="field">
-          <%= form.label :image, class: "label" %>
-          <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1">
-            <%= form.file_field :image, direct_upload: true, data: { target: 'dropzone.input' } %>
-            <div class="dropzone-msg dz-message needsclick text-gray-600">
-              <h3 class="dropzone-msg-title">Drag here to upload or click here to browse</h3>
-              <span class="dropzone-msg-desc text-sm">2 MB file size maximum. Allowed file types png, jpg.</span>
-            </div>
-          </div>
+    <div class="field">
+      <%= form.label :image, class: "label" %>
+      <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1">
+        <%= form.file_field :image, direct_upload: true, data: { target: 'dropzone.input' } %>
+        <div class="dropzone-msg dz-message needsclick text-gray-600">
+          <h3 class="dropzone-msg-title">Drag here to upload or click here to browse</h3>
+          <span class="dropzone-msg-desc text-sm">2 MB file size maximum. Allowed file types png, jpg.</span>
         </div>
+      </div>
+    </div>
     
-
     <div class="field">
       <%= form.label :category, "Select category" %>
       <%= form.collection_select(:category_ids, Category.all, :id, :category_name,

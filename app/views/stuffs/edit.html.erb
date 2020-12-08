@@ -18,43 +18,15 @@
     </div>
 
     <div class="field">
-      <%= form.file_field :image %>
-    </div>  
-
-    <!--<div class="position-relative mr-3 text-center file-preview" style="width: min-content;">
-      <div class="img-thumbnail">
-        <%= image_tag(@stuff.stuff_image) if @stuff.image.attached?  %>
-        <button style="top: 5px; right: 5px;" class="btn btn-sm btn-danger position-absolute" onclick="$(this).closest('.file-preview').remove()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <input class="d-none"  type="file" name="stuff[images]">
-    </div>
-
-
-    <div id="file-list" class="mb-2 d-flex"></div>
-
-    <label for="stuff_image" class="btn btn-warning">Upload</label>
-    <input
-      id="stuff_image"
-      type="file"
-      name="stuff[image]"
-      class="d-none"
-      onchange="window.breakIntoSeparateFiles(this, '#file-list', '#file-preview')"
-    />
-
-    <template id="file-preview">
-      <div class="position-relative mr-3 text-center file-preview" style="width: min-content;">
-        <div class="img-thumbnail">
-          <%= image_tag(@stuff.stuff_image) if @stuff.image.attached?  %>
-          <button style="top: 5px; right: 5px;" class="btn btn-sm btn-danger position-absolute" onclick="$(this).closest('.file-preview').remove()">
-            <span aria-hidden="true">&times;</span>
-          </button>
+      <%= form.label :image, class: "label" %>
+      <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1">
+        <%= form.file_field :image, direct_upload: true, data: { target: 'dropzone.input' } %>
+        <div class="dropzone-msg dz-message needsclick text-gray-600">
+          <h3 class="dropzone-msg-title">Drag here to upload or click here to browse</h3>
+          <span class="dropzone-msg-desc text-sm">2 MB file size maximum. Allowed file types png, jpg.</span>
         </div>
-
-        <input class="d-none"  type="file" name="stuff[images]">
       </div>
-    </template>-->
+    </div>  
 
     <div class="field">
       <%= form.label :category, "Select category" %>
@@ -71,7 +43,6 @@
       <%= form.submit %>
     </div>
   <% end %>
-
 
   <%= link_to 'Show', @stuff %> |
   <%= link_to 'Back', stuffs_path %> |

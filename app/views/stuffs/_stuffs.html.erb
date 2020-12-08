@@ -1,28 +1,19 @@
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Image</th>
-      <th>Found date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @stuffs.each do |stuff| %>
-      <tr>
-        <td><%= stuff.title %></td>
-        <td><%= stuff.description %></td>
-        <td><%= image_tag(stuff.stuff_image) %></td>
-        <!--<td><p style="height:55%"><%= stuff.image %></p></td>-->
-        <td><%= stuff.found_date %></td>
-        <td><%= link_to 'Show', stuff %></td>
-        <!--<td><%= link_to 'Edit', edit_stuff_path(stuff) %></td>
-        <td><%= link_to 'Destroy', stuff, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<div class="d-flex flex-wrap">
+  <% @stuffs.each do |stuff| %>
+    <div class="card mx-auto mb-3" style="width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <%= image_tag(stuff.stuff_image) %>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><%= stuff.title %></h5>
+            <p class="card-text"><%= stuff.description.first(80) %></p>
+            <p><%= link_to 'Show', stuff %></p>
+            <p class="card-text"><small class="text-muted">Posted: <%= time_ago_in_words(stuff.created_at) %> ago</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
