@@ -2,7 +2,7 @@
 
 <h1>New Stuff</h1>
 
-<%= form_with(model: @stuff, local: true) do |form| %>
+<%= form_with(model: @stuff, local: true, :html => { multipart: true }) do |form| %>
 
   <div class="field">
     <%= form.label :title %>
@@ -14,10 +14,35 @@
     <%= form.text_area :description %>
   </div>
 
+
   <div class="field">
     <%= form.label :image %>
     <%= form.file_field :image %>
   </div>
+
+  <!--<div class="field">
+    <%= form.file_field :image, onchange: "window.breakIntoSeparateFiles(this, '#file-list', '#file-preview')" %>
+  </div>
+
+  <div id="file-list" class="mb-2 d-flex"></div>
+
+  <template id="file-preview">
+    <div class="position-relative mr-3 text-center file-preview" style="width: min-content;">
+      <div class="img-thumbnail">
+        <%= image_tag(@stuff.stuff_image) %>
+        <button style="top: 5px; right: 5px;" class="btn btn-sm btn-danger position-absolute" onclick="$(this).closest('.file-preview').remove()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <input class="d-none"  type="file" name="stuff[images]">
+    </div>
+  </template>-->
+
+
+
+
+
 
   <div class="field">
     <%= form.label :category, "Select category" %>
