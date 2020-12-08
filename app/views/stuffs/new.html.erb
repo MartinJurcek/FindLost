@@ -1,64 +1,46 @@
 <%= render 'shared/stuff_error'%>
 
-<h1>New Stuff</h1>
-
 <%= form_with(model: @stuff, local: true, :html => { multipart: true }) do |form| %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
-
-  <!--<div class="field">
-    <%= form.file_field :image, onchange: "window.breakIntoSeparateFiles(this, '#file-list', '#file-preview')" %>
-  </div>
-
-  <div id="file-list" class="mb-2 d-flex"></div>
-
-  <template id="file-preview">
-    <div class="position-relative mr-3 text-center file-preview" style="width: min-content;">
-      <div class="img-thumbnail">
-        <%= image_tag(@stuff.stuff_image) %>
-        <button style="top: 5px; right: 5px;" class="btn btn-sm btn-danger position-absolute" onclick="$(this).closest('.file-preview').remove()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      <input class="d-none"  type="file" name="stuff[images]">
+  <div class="container">
+    <h1>New Stuff</h1>
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
     </div>
-  </template>-->
 
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_area :description %>
+    </div>
 
+    
+        <div class="field">
+          <%= form.label :image, class: "label" %>
+          <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1">
+            <%= form.file_field :image, direct_upload: true, data: { target: 'dropzone.input' } %>
+            <div class="dropzone-msg dz-message needsclick text-gray-600">
+              <h3 class="dropzone-msg-title">Drag here to upload or click here to browse</h3>
+              <span class="dropzone-msg-desc text-sm">2 MB file size maximum. Allowed file types png, jpg.</span>
+            </div>
+          </div>
+        </div>
+    
 
+    <div class="field">
+      <%= form.label :category, "Select category" %>
+      <%= form.collection_select(:category_ids, Category.all, :id, :category_name,
+              { prompt: true }, { class:"custom-select" }) %>
+    </div>
 
+    <div class="field">
+      <%= form.label :found_date %>
+      <%= form.date_select :found_date %>
+    </div>
 
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :category, "Select category" %>
-    <%= form.collection_select(:category_ids, Category.all, :id, :category_name,
-            { prompt: true }, { class:"custom-select" }) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :found_date %>
-    <%= form.date_select :found_date %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-
-
-<%= link_to 'Back', stuffs_path %>
+  <%= link_to 'Back', stuffs_path %>
+</div>

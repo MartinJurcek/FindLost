@@ -1,77 +1,79 @@
-<h1>Editing Stuff</h1>
+<%= render 'shared/stuff_error'%>
 
 <%= form_with(model: @stuff, local: true) do |form| %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= image_tag(@stuff.stuff_image) if @stuff.image.attached? %>
-  </div>
-
-  <div class="field">
-    <%= form.file_field :image %>
-  </div>  
-
-  <!--<div class="position-relative mr-3 text-center file-preview" style="width: min-content;">
-    <div class="img-thumbnail">
-      <%= image_tag(@stuff.stuff_image) if @stuff.image.attached?  %>
-      <button style="top: 5px; right: 5px;" class="btn btn-sm btn-danger position-absolute" onclick="$(this).closest('.file-preview').remove()">
-        <span aria-hidden="true">&times;</span>
-      </button>
+  <div class="container">
+    <h1>Editing Stuff</h1>
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
     </div>
-    <input class="d-none"  type="file" name="stuff[images]">
-  </div>
 
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_area :description %>
+    </div>
 
-  <div id="file-list" class="mb-2 d-flex"></div>
+    <div class="field">
+      <%= image_tag(@stuff.stuff_image) if @stuff.image.attached? %>
+    </div>
 
-  <label for="stuff_image" class="btn btn-warning">Upload</label>
-  <input
-    id="stuff_image"
-    type="file"
-    name="stuff[image]"
-    class="d-none"
-    onchange="window.breakIntoSeparateFiles(this, '#file-list', '#file-preview')"
-  />
+    <div class="field">
+      <%= form.file_field :image %>
+    </div>  
 
-  <template id="file-preview">
-    <div class="position-relative mr-3 text-center file-preview" style="width: min-content;">
+    <!--<div class="position-relative mr-3 text-center file-preview" style="width: min-content;">
       <div class="img-thumbnail">
         <%= image_tag(@stuff.stuff_image) if @stuff.image.attached?  %>
         <button style="top: 5px; right: 5px;" class="btn btn-sm btn-danger position-absolute" onclick="$(this).closest('.file-preview').remove()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
       <input class="d-none"  type="file" name="stuff[images]">
     </div>
-  </template>-->
-
-  <div class="field">
-    <%= form.label :category, "Select category" %>
-    <%= form.collection_select(:category_ids, Category.all, :id, :category_name,
-            { prompt: true }, { class:"custom-select" }) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :found_date %>
-    <%= form.date_select :found_date %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
 
 
-<%= link_to 'Show', @stuff %> |
-<%= link_to 'Back', stuffs_path %> |
-<%= link_to 'Remove', stuff_path(@stuff), method: :delete, data: {confirm: 'Are you sure'} %>
+    <div id="file-list" class="mb-2 d-flex"></div>
+
+    <label for="stuff_image" class="btn btn-warning">Upload</label>
+    <input
+      id="stuff_image"
+      type="file"
+      name="stuff[image]"
+      class="d-none"
+      onchange="window.breakIntoSeparateFiles(this, '#file-list', '#file-preview')"
+    />
+
+    <template id="file-preview">
+      <div class="position-relative mr-3 text-center file-preview" style="width: min-content;">
+        <div class="img-thumbnail">
+          <%= image_tag(@stuff.stuff_image) if @stuff.image.attached?  %>
+          <button style="top: 5px; right: 5px;" class="btn btn-sm btn-danger position-absolute" onclick="$(this).closest('.file-preview').remove()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <input class="d-none"  type="file" name="stuff[images]">
+      </div>
+    </template>-->
+
+    <div class="field">
+      <%= form.label :category, "Select category" %>
+      <%= form.collection_select(:category_ids, Category.all, :id, :category_name,
+              { prompt: true }, { class:"custom-select" }) %>
+    </div>
+
+    <div class="field">
+      <%= form.label :found_date %>
+      <%= form.date_select :found_date %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+
+
+  <%= link_to 'Show', @stuff %> |
+  <%= link_to 'Back', stuffs_path %> |
+  <%= link_to 'Remove', stuff_path(@stuff), method: :delete, data: {confirm: 'Are you sure'} %>
+</div>

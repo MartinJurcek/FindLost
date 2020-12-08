@@ -5,7 +5,7 @@ class Stuff < ApplicationRecord
   has_many :categories, through: :stuff_categories
   validates :title, presence: true, length: { maximum: 20 }
   validates :description, presence: true, length: {maximum: 300}
-  #validate :image_type
+  validate :image_type
   after_commit :add_default_image, on: %i[create update]
 
   
