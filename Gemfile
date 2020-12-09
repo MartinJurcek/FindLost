@@ -26,6 +26,8 @@ gem 'devise-bootstrap-views'
 gem 'devise-i18n'
 gem "font-awesome-rails"
 gem 'jquery-rails'
+# will_paginate is a pagination library
+gem 'will_paginate'
 # Dropzone for images. Read more: https://github.com/ncuesta/dropzonejs-rails
 gem 'dropzonejs-rails'
 
