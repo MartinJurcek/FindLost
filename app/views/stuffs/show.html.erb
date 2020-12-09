@@ -1,26 +1,60 @@
-<p id="notice"><%= notice %></p>
+<div class = "show-container">
+  <div class="container">
+    <div class="back-btn">
+    <%= link_to '< Back to home page', stuffs_path %>
+    </div>
+    <div class="form-row w-100">
+      <div class="col">
+        <h2>
+          <%= @stuff.title %>
+        </h2 class="stuff-title-show">
+        <div style="width:40%; height:auto">
+          <%= image_tag(@stuff.image, style:'width:100%') %>
+        </div>
+      </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @stuff.title %>
-</p>
+      <div class="col">
+        <div class="contact">
+          <p>User: 
+          <% if user_signed_in? %>
+            <%= @stuff.user.username if @stuff.user%>
+          <% end %>
+          </p><!--if @stuff.user ne treba-->
+          <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">
+            <%= fa_icon 'phone' %> Show mobile phone
+          </button>
 
-<div style="width:400px; height:auto">
-  <%= image_tag(@stuff.image, style:'width:100%') if @stuff.image.attached? %>
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Br telefona: <%= @stuff.user.phone_number %></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  FindLost aplikacija se trudi da vrati izgubljene stvari.
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-desc">
+      <strong>Description:</strong><br>
+      <p style="padding:5%">
+        <%= @stuff.description %>
+      </p>
+    </div>
+
+    
+    <% if user_signed_in? && (@stuff.user == current_user || current_user.admin?) %>
+      <%= link_to 'Edit', edit_stuff_path(@stuff) %>
+    <% end %> 
+  </div>
 </div>
-
-<p>
-  <strong>Description:</strong>
-  <%= @stuff.description %>
-</p>
-
-<p>
-  <strong>Found date:</strong>
-  <%= @stuff.found_date %>
-</p>
-
-<% if user_signed_in? && (@stuff.user == current_user || current_user.admin?) %>
-  <%= link_to 'Edit', edit_stuff_path(@stuff) %>
-<% end %> 
-
-<%= link_to 'Back', stuffs_path %>

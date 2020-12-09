@@ -9,6 +9,14 @@ class Stuff < ApplicationRecord
   after_commit :add_default_image, on: %i[create update]
 
   
+  def self.search(search)
+    if search
+      where('title LIKE ?', "%#{search}%")
+    else 
+      Stuff.all
+    end
+  end
+
   def stuff_image
     if image.attached?
       image.variant(resize: "150x150!").processed 

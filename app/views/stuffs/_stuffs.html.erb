@@ -9,7 +9,7 @@
           <div class="card-body">
             <h5 class="card-title"><%= stuff.title %></h5>
             <p class="card-text"><%= stuff.description.first(80) %></p>
-            <p><%= link_to 'Show', stuff %></p>
+            <p><%= link_to 'Show', stuff, class:"btn btn-info" %></p>
             <p class="card-text"><small class="text-muted">Posted: <%= time_ago_in_words(stuff.created_at) %> ago</small></p>
           </div>
         </div>
