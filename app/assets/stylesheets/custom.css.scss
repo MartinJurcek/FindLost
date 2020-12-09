@@ -5,23 +5,17 @@
   margin: 0;
 }
 
-#search-line {
-  text-align: center;
-}
 //navigation
 .navbar-brand {
   font-size: 30px;
 }
-
 .navbar {
   background-color: rgb(92, 92, 92) !important;
 }
-
 .user-name {
   padding: 8px;
   margin-right: 20px;
 }
-
 .name {
   color: rgb(22, 21, 21);
 }
@@ -30,13 +24,11 @@
   text-decoration: none;
 }
 
-
 //flash message for stuffs
 .alert ul li {
   list-style-type: none;
   justify-content: center;
 }
-
 
 //styling for devise form
 .wrapper {
@@ -57,7 +49,6 @@
   max-width: 500px;
 }
  
-
 //navbar icon
 .bg-iconnav {
   background:#ffc107;
@@ -94,7 +85,7 @@
   text-transform: uppercase;
 }
 
-
+//cards
 .card {
   padding: 1em;
 }
@@ -133,7 +124,6 @@
   text-decoration: underline;
 }
 
-
 //show stuff page
 .show-container {
   padding-left: 20%;
@@ -143,6 +133,11 @@
 .back-btn {
   margin-bottom: 5%;
   margin-top: 2%;
+}
+
+//_search
+#search-line {
+  text-align: center;
 }
 
 //popup for advance search

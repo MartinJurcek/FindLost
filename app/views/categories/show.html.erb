@@ -11,3 +11,8 @@
 <div class="text-center">
   <%= link_to 'Cancel and return to categories listing', categories_path %>
 </div>
+
+<div class="container rounded apple_pagination mb-4" id="pagination-container">
+  <%= will_paginate @stuffs, :container => false %>
+</div>
+

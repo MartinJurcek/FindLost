@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :stuffs
   resources :show_users
   resources :categories, except: [:destroy]
+  get 'find_stuffs', to: 'stuffs#find_stuffs'
+  get 'lost_stuffs', to: 'stuffs#lost_stuffs'
   root to: "stuffs#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

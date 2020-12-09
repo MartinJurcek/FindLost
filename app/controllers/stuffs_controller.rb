@@ -16,6 +16,14 @@ class StuffsController < ApplicationController
   def show
   end
 
+  def lost_stuff
+    @stuffs = Stuff.lost_stuf
+  end
+
+  def found_stuff
+    @stuffs = Stuff.found_stuf
+  end
+
   # GET /stuffs/new
   def new
     @stuff = Stuff.new
@@ -73,7 +81,7 @@ class StuffsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def stuff_params
-      params.require(:stuff).permit(:title, :description, :found_date, :category_ids, :image)
+      params.require(:stuff).permit(:title, :description, :found_date, :category_ids, :image, :find, :lost)
     end
 
     #def require_same_user

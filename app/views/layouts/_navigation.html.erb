@@ -10,6 +10,12 @@
         <li class="nav-item">
           <a class="nav-link" href="#">About</a><!--responsive ne radi dobro-->
         </li>
+        <li class="nav-item">
+          <%= link_to "Found", find_stuffs_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Lost", lost_stuffs_path, class: "nav-link" %>
+        </li>
       </ul>
       <ul class="navbar-nav">
         <% if current_user %>

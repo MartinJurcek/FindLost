@@ -3,3 +3,7 @@
 <%= render 'stuffs' %>
 
 <!--<%= link_to 'New Stuff', new_stuff_path %>-->
+
+<div class="container rounded apple_pagination mb-4" id="pagination-container">
+  <%= will_paginate @stuffs, :container => false %>
+</div>

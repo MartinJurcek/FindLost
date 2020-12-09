@@ -29,6 +29,37 @@
     </div>  
 
     <div class="field">
+      <%= form.label :find %>
+      <%= form.check_box :find, class: "check-box", onclick: "return ValidateSelection();", value: "1" %>
+      <!--<input type="checkbox" name="stuff[find]" value="true" class="type" value="1" onclick= "return ValidateSelection();">-->
+    </div>
+
+    <div class="field">
+      <%= form.label :lost %>
+      <%= form.check_box :lost, class: "check-box", onclick: "return ValidateSelection();", value: "2" %>
+      <!--<input type="checkbox" name="stuff[lost]" value="false" class="type" value="2" onclick= "return ValidateSelection();">-->
+    </div>
+
+    <script>
+
+      function ValidateSelection() {
+        var checkboxes = document.getElementsByClassName("check-box");
+        var numberOfCheckedItems = 0;
+        for (var i = 0; i < checkboxes.length; i++)
+        {
+          if(checkboxes[i].checked)
+            numberOfCheckedItems++;
+        }
+        if(numberOfCheckedItems > 1)
+        {
+          alert("you can't select both options");
+          return false;
+        }
+      }
+
+    </script>
+
+    <div class="field">
       <%= form.label :category, "Select category" %>
       <%= form.collection_select(:category_ids, Category.all, :id, :category_name,
               { prompt: true }, { class:"custom-select" }) %>
