@@ -35,7 +35,7 @@ class Devise::RegistrationsController < DeviseController
 
   # GET /resource/edit
   def edit
-    @stuffs = @user.stuffs
+    @stuffs = @user.stuffs.paginate(page: params[:page], per_page: 10)
     render :edit
   end
 
@@ -43,7 +43,7 @@ class Devise::RegistrationsController < DeviseController
   # We need to use a copy of the resource because we don't want to change
   # the current user in place.
   def update
-    @stuffs = @user.stuffs
+    @stuffs = @user.stuffs.paginate(page: params[:page], per_page: 15)
 
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
