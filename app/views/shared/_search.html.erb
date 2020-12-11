@@ -1,0 +1,70 @@
+<!--<div class="container" id="search-line">
+  <div class="form-inline search-line justify-content-center">-->
+    <!--<div class="col-sm-3 inline-block">
+      
+      <%= link_to 'New Stuff', new_stuff_path, class:'new-btn btn btn-primary' %>
+      
+    </div>-->
+    <div class="col-sm-12">
+      <!--<form class="form-inline" action="/search">
+        <input class="form-control mr-sm-2 w-50" name="q" type="search" placeholder="Search" aria-label="Search" id="search">
+          <a class="btn btn-outline-secondary my-2 my-sm-5" id="btn-filter" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <%= fa_icon 'filter' %>
+          </a>
+        </button>
+        <button class="btn btn-outline-success my-2 my-sm-5" type="submit">Search</button>
+      </form>-->
+<!--
+        <%= form_tag root_path, class: "form-inline", :method => 'get' do %>
+          <%= text_field_tag :search, params[:search], class: "form-control mr-sm-2 w-75", placeholder: "Search..." %>
+          <a class="btn btn-outline-secondary my-2 my-sm-5" id="btn-filter" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <%= fa_icon 'filter' %>
+          </a>
+          <%= fa_icon "search", :name => nil, class: "btn btn-outline-success my-2 my-sm-5" %>
+        <% end %>
+
+    
+    </div>
+  </div>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body mx-auto" id="advance-search">
+      advance search
+    </div>
+  </div>
+</div>-->
+
+<div class="row">
+    <div class="col-lg-12 card-margin">
+        <div class="card search-form">
+            <div class="card-body p-0">
+                  <%= form_tag root_path, :method => 'get' do %>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row no-gutters">
+                                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Location</option>
+                                        <option>London</option>
+                                        <option>Boston</option>
+                                        <option>Mumbai</option>
+                                        <option>New York</option>
+                                        <option>Toronto</option>
+                                        <option>Paris</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12 p-0">
+                                  <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search..." %>
+                                </div>
+                                <div class="col-lg-1 col-md-3 col-sm-12 p-0">
+                                    <button type="submit" class="btn btn-base">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,7 +8,7 @@ class StuffsController < ApplicationController
   # GET /stuffs
   # GET /stuffs.json
   def index
-    @stuffs = Stuff.search(params[:search]).paginate(page: params[:page], per_page: 15)
+    @stuffs = Stuff.search(params[:search]).paginate(page: params[:page], per_page: 14)
   end
 
   # GET /stuffs/1
