@@ -352,3 +352,20 @@
 .list-border a {
   border: none;
 }
+
+.icon-position {
+  text-align: center;
+  justify-content: center;
+}
+.counter {
+  font-size: 80px;
+}
+
+
+.icon-position a {
+  text-decoration:none;
+  color: black;
+}
+.icon-position a:hover {
+  color: gainsboro;
+}
