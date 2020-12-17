@@ -7,7 +7,7 @@
         <h1 class="my-4">Stuffs</h1>
         <div class="list-group list-border">
           <a><%= link_to 'New Stuff', new_stuff_path, class:'new-btn btn btn-primary' %></a>
-          <a><%= link_to 'My account', edit_user_registration_path(@user), class:'btn btn-warning my-2' %></a>
+          <a><%= link_to 'My account', edit_user_registration_path(@user), class:'my-acc btn btn-warning my-2' %></a>
           <a href="#" class="list-group-item">Category 3</a>
         </div>
       </div>
@@ -15,20 +15,26 @@
         <div class="icon-position">
           <a class="fa fa-search-plus my-3" style="font-size: 75px" href="find_stuffs"></a>
           <p class="counter" data-target="<%= Stuff.found_stuf.count %>"></p>
-          <p style="font-size: 40px">found stuffs</p>
+          <p style="font-size: 40px"><strong>found stuffs</strong></p>
         </div>
       </div>
       <div class="col-sm-5 my-5">
         <div class="icon-position">
           <a class="fa fa-search my-3" style="font-size: 75px" href="lost_stuffs"></a>
           <p class="counter" data-target="<%= Stuff.lost_stuf.count %>"></p>
-          <p style="font-size: 40px">lost stuffs</p>
+          <p style="font-size: 40px"><strong>lost stuffs</strong></p>
         </div>
       </div>
     </div>
     <div class="dropdown-divider my-5"></div>
-    <%= render 'shared/search' %>
-    <%= render 'stuffs' %>
+    <%= render 'shared/search' %>    
+  </div>
+  <div class="container"><!--radi na svim rezolucijama, bez toga ne radi-->
+    <div class="row">
+      <div class="col">
+        <%= render 'stuffs' %>
+      </div>
+    </div>
   </div>
 
   <div class="container rounded apple_pagination mb-4 my-5" id="pagination-container">
@@ -36,6 +42,7 @@
   </div>
 </div>
 <%= render 'shared/footer' %>
+
 
 <script>
 var counters = document.querySelectorAll('.counter');
