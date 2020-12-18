@@ -57,10 +57,29 @@
       </p>
     </div>
 
+    <div>
+      <p>address</p>
+      <%= @stuff.address %>
+    </div>
+
+    <div>
+      <p>latitude</p>
+      <%= @stuff.latitude %>
+    </div>
+
+    <div>
+      <p>longitude</p>
+      <%= @stuff.longitude %>
+    </div>
+
     
     <% if user_signed_in? && (@stuff.user == current_user || current_user.admin?) %>
       <%= link_to 'Edit', edit_stuff_path(@stuff) %>
     <% end %> 
+
+    <p>
+      <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&center=#{@stuff.latitude},#{@stuff.longitude}&key= #{Rails.application.credentials.aws[:access_key_id]}", alt: "Map" %>
+    </p>
   </div>
 </div>
 

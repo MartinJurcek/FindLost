@@ -360,6 +360,7 @@
   border: none;
 }
 
+//icons for lost and found stuffs
 .icon-position {
   text-align: center;
   justify-content: center;
@@ -367,12 +368,17 @@
 .counter {
   font-size: 80px;
 }
-
-
 .icon-position a {
   text-decoration:none;
   color: black;
 }
 .icon-position a:hover {
   color: gainsboro;
+}
+
+
+
+.map {
+  width: 100%;
+  min-height: 400px;
 }

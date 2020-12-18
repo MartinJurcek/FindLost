@@ -1,6 +1,6 @@
 <%= render 'shared/stuff_error'%>
 
-<%= form_with(model: @stuff, local: true) do |form| %>
+<%= form_with(model: @stuff, local: true, data: {controller: "maps", action: "google-maps-callback@window->maps#initMap"}) do |form| %>
   <div class="container">
     <h1>Editing Stuff</h1>
     <div class="field">
@@ -69,6 +69,24 @@
       <%= form.label :found_date %>
       <%= form.date_select :found_date %>
     </div>
+
+    <div class="field">
+      <%= form.label :address %>
+      <%= form.text_field :address, data: { target: "maps.field", action: "keydown->maps#keydown" } %>
+    </div>
+
+    <div class="field">
+      <%= form.label :latitude %>
+      <%= form.text_field :latitude, data: { target: "maps.latitude" } %>
+    </div>
+
+    <div class="field">
+      <%= form.label :longitude %>
+      <%= form.text_field :longitude, data: { target: "maps.longitude" } %>
+    </div>
+
+    <%= content_tag :div, nil, data: { target: "maps.map" }, class: 'map' %>
+
 
     <div class="actions">
       <%= form.submit %>
