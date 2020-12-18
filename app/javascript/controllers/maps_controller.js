@@ -1,56 +1,77 @@
-import { Controller } from "stimulus"
+import { Controller} from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "field", "map", "longitude", "latitude" ]
+  static targets = ["field", "map", "latitude", "longitude"]
 
   connect() {
-    if (typeof(google) != "undefined"){
+    if (typeof (google) != "undefined"){
       this.initMap()
     }
   }
 
   initMap() {
-    this.map = new google.maps.Map(this.mapTarget, {
-      center: new google.maps.LatLng(44, 21),
-      zoom: 6
-    })
-    this.autocomplete = new google.maps.places.Autocomplete(this.fieldTarget)
-    this.autocomplete.bindTo('bounds', this.map)
-    this.autocomplete.setFields(['address_components', 'geometry', 'icon', 'name'])
-    this.autocomplete.addListener('place_changed', this.placeChanged.bind(this))
-
-    this.marker = new google.maps.Marker({
-      map: this.map,
-      anchorPoint: new google.maps.Point(0, -29)
-    })
+    this.map()
+    this.marker()
+    this.autocomplete()
+    console.log('init')
   }
 
-  placeChanged() {
-    let place = this.autocomplete.getPlace()
+  map() {
+    if(this._map == undefined) {
+      this._map = new google.maps.Map(this.mapTarget, {
+        center: new google.maps.LatLng(44, 21),
+        zoom: 7
+      })
+    }
+    return this._map
+  }
+
+  marker() {
+    if (this._marker == undefined) {
+      this._marker = new google.maps.Marker({
+        map: this.map(),
+        anchorPoint: new google.maps.Point(0,0)
+      })
+      let mapLocation = {
+        lat: parseFloat(this.latitudeTarget.value),
+        lng: parseFloat(this.longitudeTarget.value)
+      }
+      this._marker.setPosition(mapLocation)
+      this._marker.setVisible(true)
+    }
+    return this._marker
+  }
+
+  autocomplete() {
+    if (this._autocomplete == undefined) {
+      this._autocomplete = new google.maps.places.Autocomplete(this.fieldTarget)
+      this._autocomplete.bindTo('bounds', this.map())
+      this._autocomplete.setFields(['address_components', 'geometry', 'icon', 'name'])
+      this._autocomplete.addListener('place_changed', this.locationChanged.bind(this))
+    }
+    return this._autocomplete
+  }
+
+  locationChanged() {
+    let place = this.autocomplete().getPlace()
 
     if (!place.geometry) {
-      window.alert(`No details available for input: ${place.name}`)
-      return
+      // User entered the name of a Place that was not suggested and
+      // pressed the Enter key, or the Place Details request failed.
+      window.alert("No details available for input: '" + place.name + "'");
+      return;
     }
 
-    if (place.geometry.viewport) {
-      this.map.fitBounds(place.geometry.viewport)
-    } else {
-      this.map.setCenter(place.geometry.location)
-      this.map.setZoom(17)
-    }
-    
-    this.marker.setPosition(place.geometry.location)
-    this.marker.setVisible(true)
+    this.map().fitBounds(place.geometry.viewport)
+    this.map().setCenter(place.geometry.location)
+    this.marker().setPosition(place.geometry.location)
+    this.marker().setVisible(true)
 
     this.latitudeTarget.value = place.geometry.location.lat()
     this.longitudeTarget.value = place.geometry.location.lng()
-    
   }
 
-  keydown(event) {
-    if (event.key == "Enter") {
-      event.preventDefault()
-    }
+  keydown(e) {
+    if (e.key == "Enter") { e.keydown() }
   }
 }

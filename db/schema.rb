@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 2020_12_17_211818) do
     t.boolean "find"
     t.boolean "lost"
     t.string "address"
-    t.decimal "latitude", precision: 10
-    t.decimal "longitude", precision: 10
+    t.decimal "latitude", precision: 10, scale: 6
+    t.decimal "longitude", precision: 10, scale: 6
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
