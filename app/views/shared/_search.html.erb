@@ -5,7 +5,7 @@
       <%= link_to 'New Stuff', new_stuff_path, class:'new-btn btn btn-primary' %>
       
     </div>-->
-    <div class="col-sm-12">
+    <!--<div class="col-sm-12">-->
       <!--<form class="form-inline" action="/search">
         <input class="form-control mr-sm-2 w-50" name="q" type="search" placeholder="Search" aria-label="Search" id="search">
           <a class="btn btn-outline-secondary my-2 my-sm-5" id="btn-filter" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -42,15 +42,8 @@
                         <div class="col-12">
                             <div class="row no-gutters">
                                 <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <option>Location</option>
-                                        <option>London</option>
-                                        <option>Boston</option>
-                                        <option>Mumbai</option>
-                                        <option>New York</option>
-                                        <option>Toronto</option>
-                                        <option>Paris</option>
-                                    </select>
+                                    <input type="text" id="ajax" list="json-datalist" placeholder="e.g. datalist">
+                                    <datalist id="json-datalist"></datalist>
                                 </div>
                                 <div class="col-lg-8 col-md-6 col-sm-12 p-0">
                                   <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search..." %>
@@ -68,3 +61,54 @@
         </div>
     </div>
 </div>
+<script>
+  //var $select = $('#srch');
+//
+  //$(document).ready(function(){
+  //      $.getJSON("rs.json", function(data){
+  //          console.log(data);
+  //      }).fail(function(){
+  //          console.log("An error has occurred.");
+  //      });
+  //  });
+
+  //var city = require('./rs.json');
+//
+  //console.log(city.city);
+
+var dataList = document.getElementById('json-datalist');
+var input = document.getElementById('ajax');
+
+  // Create a new XMLHttpRequest.
+var request = new XMLHttpRequest();
+
+// Handle state changes for the request.
+request.onreadystatechange = function(response) {
+  if (request.readyState === 4) {
+    if (request.status === 200) {
+      // Parse the JSON
+      var jsonOptions = JSON.parse(request.responseText);
+
+      // Loop over the JSON array.
+      jsonOptions.forEach(function(item) {
+        // Create a new <option> element.
+        var option = document.createElement('option');
+        // Set the value using the item in the JSON array.
+        option.value = item.city;
+        // Add the <option> element to the <datalist>.
+        dataList.appendChild(option);
+      });
+
+      // Update the placeholder text.
+      input.placeholder = "Location";
+    } else {
+      // An error occured :(
+      input.placeholder = "Couldn't load json file";
+    }
+  }
+};
+
+// Set up and make the request.
+request.open('GET', 'https://data-json1.s3-eu-west-1.amazonaws.com/rs.json', true);
+request.send();
+</script>
