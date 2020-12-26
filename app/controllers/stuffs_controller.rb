@@ -8,13 +8,32 @@ class StuffsController < ApplicationController
   # GET /stuffs
   # GET /stuffs.json
   def index
-    @stuffs = Stuff.search(params[:search]).paginate(page: params[:page], per_page: 14)
+    if params[:search].present?
+      @stuffs = Stuff.search(params[:search]).paginate(page: params[:page], per_page: 14)
+    elsif 
+      @stuffs = Stuff.search(params[:location]).paginate(page: params[:page], per_page: 14)
+    else
+      @stuffs = Stuff.all.paginate(page: params[:page], per_page: 14)
+    end
+
   end
+
+  #def search
+  #  query = params[:search]
+#
+  #  results = Stuff.where('title LIKE ?', "%#{query}%")
+  #  if params[:filter] == "Location"
+  #    @stuffs = results
+  #  else
+  #    @stuffs = results.where('address LIKE ?', "%#{query}%")
+#
+  #  end
+  #end 
 
   # GET /stuffs/1
   # GET /stuffs/1.json
   def show
-  end
+  end 
 
   def lost_stuff
     @stuffs = Stuff.lost_stuf

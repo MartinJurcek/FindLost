@@ -58,14 +58,14 @@
     </div>
 
     <div>
-      <p>address</p>
+      <p>Address:</p>
       <%= @stuff.address %>
     </div>
 
     
 
     <p>
-      <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=16&size=400x300&center=#{@stuff.latitude},#{@stuff.longitude}&key=#{ Rails.application.credentials.aws[:access_key_id] }", alt: "Map" %>
+      <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=16&size=400x300&markers=#{@stuff.latitude},#{@stuff.longitude}&key=#{ Rails.application.credentials.aws[:access_key_id] }", alt: "Map" %>
     </p>
 
     <% if user_signed_in? && (@stuff.user == current_user || current_user.admin?) %>

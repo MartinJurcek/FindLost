@@ -10,11 +10,8 @@ class Stuff < ApplicationRecord
 
   
   def self.search(search)
-    if search
-      where('title LIKE ?', "%#{search}%")
-    else 
-      Stuff.all
-    end
+      where('title LIKE ? OR address LIKE ?', "%#{search}%", "%#{search}%") #|| where('title LIKE ? AND address LIKE ?', "%#{search}%", "%#{search}%")
+    
   end
 
   def stuff_image

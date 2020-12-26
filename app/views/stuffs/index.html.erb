@@ -6,9 +6,15 @@
       <div class="col-sm-2 my-5">
         <h1 class="my-4">Stuffs</h1>
         <div class="list-group list-border">
-          <a><%= link_to 'New Stuff', new_stuff_path, class:'new-btn btn btn-primary' %></a>
+          <a><%= link_to 'New Stuff', new_stuff_path, class:'new-btn btn' %></a>
           <a><%= link_to 'My account', edit_user_registration_path(@user), class:'my-acc btn btn-warning my-2' %></a>
-          <a href="#" class="list-group-item">Category 3</a>
+          <a><%= link_to 'Find items', find_stuffs_path, class:'btn btn-primary my-1' %></a>
+          <a><%= link_to 'Lost items', lost_stuffs_path, class:'btn btn-primary my-1' %></a>
+
+          <%= form_with(model: @stuff, local: true) do |form| %>
+            <%= form.collection_select(:category_ids, Category.all, :id, :category_name,
+                                      { prompt: true }, { class:"custom-select" }) %>     
+          <% end %>
         </div>
       </div>
       <div class="col-sm-5 my-5">

@@ -37,15 +37,16 @@
     <div class="col-lg-12 card-margin">
         <div class="card search-form">
             <div class="card-body p-0">
-                  <%= form_tag root_path, :method => 'get' do %>
+                  <%= form_tag root_path, method: "get" do %>
                     <div class="row">
                         <div class="col-12">
                             <div class="row no-gutters">
                                 <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                    <input type="text" id="ajax" list="json-datalist" placeholder="e.g. datalist">
+                                    <input type="text" id="location" list="json-datalist" placeholder="e.g. datalist"  name="location">
+                                    <!--<%= text_field_tag :ajax, params[:search], list:"json-datalist", placeholder: "e.g. datalist", onChange:'get_data()' %>-->
                                     <datalist id="json-datalist"></datalist>
                                 </div>
-                                <div class="col-lg-8 col-md-6 col-sm-12 p-0">
+                                <div class="col-lg-7 col-md-5 col-sm-12 p-0">
                                   <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search..." %>
                                 </div>
                                 <div class="col-lg-1 col-md-3 col-sm-12 p-0">
@@ -53,6 +54,9 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                                     </button>
                                 </div>
+                                <a class="btn btn-base col-lg-1 col-md-1 col-sm-12" id="btn-filter" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                  <i class="fa fa-filter my-2" style="font-size: 20px" aria-hidden="true"></i>
+                                </a>                               
                             </div>
                         </div>
                     </div>
@@ -61,23 +65,19 @@
         </div>
     </div>
 </div>
+<div class="collapse" id="collapseExample">
+    <div class="card card-body mx-auto" id="advance-search">
+      <%= form_tag root_path, :method => 'get' do %>
+        Find <%= check_box_tag :title %><br>
+        Lost <%= check_box_tag :title %>
+      <button id="btn-adv">Search</button>
+      <% end %>
+    </div>
+</div>
+
 <script>
-  //var $select = $('#srch');
-//
-  //$(document).ready(function(){
-  //      $.getJSON("rs.json", function(data){
-  //          console.log(data);
-  //      }).fail(function(){
-  //          console.log("An error has occurred.");
-  //      });
-  //  });
-
-  //var city = require('./rs.json');
-//
-  //console.log(city.city);
-
 var dataList = document.getElementById('json-datalist');
-var input = document.getElementById('ajax');
+var input = document.getElementById('location');
 
   // Create a new XMLHttpRequest.
 var request = new XMLHttpRequest();
@@ -102,7 +102,7 @@ request.onreadystatechange = function(response) {
       // Update the placeholder text.
       input.placeholder = "Location";
     } else {
-      // An error occured :(
+      // An error occured 
       input.placeholder = "Couldn't load json file";
     }
   }
@@ -111,4 +111,13 @@ request.onreadystatechange = function(response) {
 // Set up and make the request.
 request.open('GET', 'https://data-json1.s3-eu-west-1.amazonaws.com/rs.json', true);
 request.send();
+</script>
+
+
+
+<script>
+function get_data(){
+  var val = document.getElementById("location").value;
+  console.log(val);
+}
 </script>
