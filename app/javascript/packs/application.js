@@ -21,9 +21,12 @@ require("channels")
 import "bootstrap"
 import 'controllers'
 
+//google maps connection
 window.initMap = function(...args) {
   const event = document.createEvent("Events")
   event.initEvent("google-maps-callback", true, true)
   event.args = args
   window.dispatchEvent(event)
 }
+
+

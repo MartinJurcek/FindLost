@@ -9,9 +9,42 @@ class Stuff < ApplicationRecord
   after_commit :add_default_image, on: %i[create update]
 
   
+  #def self.search(search)
+  #  where('title LIKE ? OR address LIKE ?', "%#{search}%", "%#{search}%") #|| where('title LIKE ? AND address LIKE ?', "%#{search}%", "%#{search}%")
+  #end
+
+  #search with word
   def self.search(search)
-      where('title LIKE ? OR address LIKE ?', "%#{search}%", "%#{search}%") #|| where('title LIKE ? AND address LIKE ?', "%#{search}%", "%#{search}%")
-    
+    stuff = all
+    stuff = Stuff.where('title LIKE ?', "%#{search}%")
+    return stuff
+  end
+
+  #search location
+  def self.searchLoc(search)
+    stuff = all
+    stuff = Stuff.where('address LIKE ?', "%#{search}%")
+    return stuff
+  end
+
+  #search found
+  def self.found(stuff)
+    stuff = all
+    stuff = Stuff.where(find: true)
+    return stuff
+  end
+  
+  #search lost
+  def self.lost(stuff)
+    stuff = all
+    stuff = Stuff.where(find: false)
+    return stuff
+  end
+
+  def self.cat(cat)
+    stuff = all
+    stuff = Stuff.joins(:categories).where('categories.id LIKE ?', "%#{cat}%")
+    return stuff
   end
 
   def stuff_image

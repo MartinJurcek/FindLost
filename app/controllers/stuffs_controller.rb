@@ -8,14 +8,32 @@ class StuffsController < ApplicationController
   # GET /stuffs
   # GET /stuffs.json
   def index
-    if params[:search].present?
-      @stuffs = Stuff.search(params[:search]).paginate(page: params[:page], per_page: 14)
-    elsif 
-      @stuffs = Stuff.search(params[:location]).paginate(page: params[:page], per_page: 14)
-    else
-      @stuffs = Stuff.all.paginate(page: params[:page], per_page: 14)
-    end
+    #if params[:search].present?
+    #  @stuffs = Stuff.search(params[:search]).paginate(page: params[:page], per_page: 14)
+    #elsif 
+    #  @stuffs = Stuff.search(params[:location]).paginate(page: params[:page], per_page: 14)
+    #else
+    #  @stuffs = Stuff.all.paginate(page: params[:page], per_page: 14)
+    #end
 
+    @stuffs = Stuff.all.paginate(page: params[:page], per_page: 14)
+    @stuffs = @stuffs.search(params[:search]).paginate(page: params[:page], per_page: 14) if params[:search].present?
+    @stuffs = @stuffs.searchLoc(params[:location]).paginate(page: params[:page], per_page: 14) if params[:location].present?
+    @stuffs = @stuffs.found(params[:value1]).paginate(page: params[:page], per_page: 14) if params[:value1].present?
+    @stuffs = @stuffs.lost(params[:value2]).paginate(page: params[:page], per_page: 14) if params[:value2].present?
+    @stuffs = @stuffs.cat(params[:category_id]).paginate(page: params[:page], per_page: 14) if params[:category_id].present?
+
+
+
+    
+    #treba da se namesti da sve radi zajedno
+    #if params[:value1].present?
+    #  @stuffs = Stuff.found_stuf().paginate(page: params[:page], per_page: 14)
+    #elsif params[:value2].present?
+    #  @stuffs = Stuff.lost_stuf().paginate(page: params[:page], per_page: 14)
+    #else
+    #  @stuffs = Stuff.all.paginate(page: params[:page], per_page: 14)
+    #end
   end
 
   #def search
