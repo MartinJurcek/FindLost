@@ -8,25 +8,20 @@
         <div class="list-group list-border">
           <a><%= link_to 'New Stuff', new_stuff_path, class:'new-btn btn' %></a>
           <a><%= link_to 'My account', edit_user_registration_path(@user), class:'my-acc btn btn-warning my-2' %></a>
-          <a><%= link_to 'Find items', find_stuffs_path, class:'btn btn-primary my-1' %></a>
-          <a><%= link_to 'Lost items', lost_stuffs_path, class:'btn btn-primary my-1' %></a>
-
-          <%= form_with(model: @stuff, local: true) do |form| %>
-            <%= form.collection_select(:category_ids, Category.all, :id, :category_name,
-                                      { prompt: true }, { class:"custom-select" }) %>     
-          <% end %>
+          <!--<a><%= link_to 'Find items', find_stuffs_path, class:'btn btn-primary my-1' %></a>
+          <a><%= link_to 'Lost items', lost_stuffs_path, class:'btn btn-primary my-1' %></a>-->
         </div>
       </div>
       <div class="col-sm-5 my-5">
         <div class="icon-position">
-          <a class="fa fa-search-plus my-3" style="font-size: 75px" href="find_stuffs"></a>
+          <p class="fa fa-search-plus my-3" style="font-size: 75px"></p>
           <p class="counter" data-target="<%= Stuff.found_stuf.count %>"></p>
           <p style="font-size: 40px"><strong>found stuffs</strong></p>
         </div>
       </div>
       <div class="col-sm-5 my-5">
         <div class="icon-position">
-          <a class="fa fa-search my-3" style="font-size: 75px" href="lost_stuffs"></a>
+          <p class="fa fa-search my-3" style="font-size: 75px"></p>
           <p class="counter" data-target="<%= Stuff.lost_stuf.count %>"></p>
           <p style="font-size: 40px"><strong>lost stuffs</strong></p>
         </div>
