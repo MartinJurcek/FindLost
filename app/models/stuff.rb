@@ -7,7 +7,7 @@ class Stuff < ApplicationRecord
   validates :description, presence: true, length: {maximum: 300}
   validate :image_type
   after_commit :add_default_image, on: %i[create update]
-
+  
   
   #def self.search(search)
   #  where('title LIKE ? OR address LIKE ?', "%#{search}%", "%#{search}%") #|| where('title LIKE ? AND address LIKE ?', "%#{search}%", "%#{search}%")

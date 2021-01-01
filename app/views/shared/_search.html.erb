@@ -29,15 +29,20 @@
           </div>
       </div>
   </div>
-  <div class="collapse" id="collapseExample">
-      <div class="card card-body mx-auto" id="advance-search">
-        <div class="container">
-          <p>Found <%= check_box_tag('value1', "Found") %></p>
-          <p>Lost <%= check_box_tag('value2', "Lost") %></p>      
-          <p>Select category: <%= select_tag "category_id", options_from_collection_for_select(Category.all, :id, :category_name), class:"form-control", prompt: "Select category" %></p>
-        <button id="btn-adv" class="btn btn-outline-success">Search</button>
+  <div class="container">
+    <div class="collapse" id="collapseExample">
+        <div class="card card-body" id="advance-search">
+          <div class="container">
+            <p>Found <%= check_box_tag('value1', "Found") %></p>
+            <p>Lost <%= check_box_tag('value2', "Lost") %></p>      
+            <p>Select category: <%= select_tag "category_id", options_from_collection_for_select(Category.all, :id, :category_name), class:"form-control", prompt: "Select category" %></p>
+            <div class="row">
+              <p>Date from: <%= date_field_tag('date_from') %></p> <p>Date to: <%= date_field_tag('date_to') %></p><br>
+            </div>
+          <button id="btn-adv" class="btn btn-outline-success">Search</button>
+          </div>
         </div>
-      </div>
+    </div>
   </div>
 <% end %>  
 

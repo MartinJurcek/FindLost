@@ -3,93 +3,93 @@
 <%= form_with(model: @stuff, local: true, data: {controller: "maps", action: "google-maps-callback@window->maps#initMap"}, :html => { multipart: true }) do |form| %>
 
   <div class="container">
-    <h1>New Stuff</h1>
-    <div class="field">
-      <%= form.label :title %>
-      <%= form.text_field :title %>
-    </div>
+    <div class="row">
+      <div class="col">
+        <h1>New Stuff</h1>
+        <div class="field my-3">
+          <%= form.label :title %>
+          <%= form.text_field :title, class:"form-control", placeholder:"Title" %>
+        </div>
 
-    <div class="field">
-      <%= form.label :description %>
-      <%= form.text_area :description %>
-    </div>
+        <div class="field my-3">
+          <%= form.label :description %>
+          <%= form.text_area :description, class:"form-control", placeholder:"Description" %>
+        </div>
+
+        <div class="field my-3">
+          <%= form.label :image, class: "label" %>
+          <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1">
+            <%= form.file_field :image, direct_upload: true, data: { target: 'dropzone.input' } %>
+            <div class="dropzone-msg dz-message needsclick text-gray-600">
+              <h3 class="dropzone-msg-title">Drag here to upload or click here to browse</h3>
+              <span class="dropzone-msg-desc text-sm">2 MB file size maximum. Allowed file types png, jpg.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="field my-3">
+          <%= form.label :find %>
+          <%= form.check_box :find, class: "check-box", onclick: "return ValidateSelection();", value: "1" %>
+          <!--<input type="checkbox" name="stuff[find]" value="true" class="type" value="1" onclick= "return ValidateSelection();">-->
+        </div>
     
-    <div class="field">
-      <%= form.label :image, class: "label" %>
-      <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1">
-        <%= form.file_field :image, direct_upload: true, data: { target: 'dropzone.input' } %>
-        <div class="dropzone-msg dz-message needsclick text-gray-600">
-          <h3 class="dropzone-msg-title">Drag here to upload or click here to browse</h3>
-          <span class="dropzone-msg-desc text-sm">2 MB file size maximum. Allowed file types png, jpg.</span>
+        <div class="field my-3">
+          <%= form.label :lost %>
+          <%= form.check_box :lost, class: "check-box", onclick: "return ValidateSelection();", value: "2" %>
+          <!--<input type="checkbox" name="stuff[lost]" value="false" class="type" value="2" onclick= "return ValidateSelection();">-->
+        </div>
+
+        <div class="field my-3">
+          <%= form.label :category, "Select category" %>
+          <%= form.collection_select(:category_ids, Category.all, :id, :category_name,
+                  { prompt: true }, { class:"custom-select" }) %>
+        </div>
+
+        <div class="field my-4">
+          <%= form.label :found_date %>
+          <%= form.date_select :found_date, class:"form-control" %>
+        </div>
+
+        
+      </div>
+      <div class="col">
+        <div class="my-5">
+          <div data-target="maps.map" class="map">
         </div>
       </div>
+      <div class="field my-3">
+        <%= form.label :address %>
+        <%= form.text_field :address, data: { target: "maps.field", action: "keydown->maps#keydown" }, class:"form-control" %>
+      </div>
+      <div class="field">
+          <%= form.text_field :latitude, data: { target: "maps.latitude" }, class:"form-control", type:"hidden" %>
+      </div>
+      
+      <div class="field">
+        <%= form.text_field :longitude, data: { target: "maps.longitude" }, class:"form-control", type:"hidden" %>
+      </div>
+        
+      <div class="actions my-3">
+        <%= form.submit class:"btn btn-primary" %>
+      </div>
+        <%= link_to 'Back', stuffs_path %>
     </div>
+  </div>
+<% end %>
 
-    <div class="field">
-      <%= form.label :find %>
-      <%= form.check_box :find, class: "check-box", onclick: "return ValidateSelection();", value: "1" %>
-      <!--<input type="checkbox" name="stuff[find]" value="true" class="type" value="1" onclick= "return ValidateSelection();">-->
-    </div>
-
-    <div class="field">
-      <%= form.label :lost %>
-      <%= form.check_box :lost, class: "check-box", onclick: "return ValidateSelection();", value: "2" %>
-      <!--<input type="checkbox" name="stuff[lost]" value="false" class="type" value="2" onclick= "return ValidateSelection();">-->
-    </div>
-
-    <script>
-
-      function ValidateSelection() {
-        var checkboxes = document.getElementsByClassName("check-box");
-        var numberOfCheckedItems = 0;
-        for (var i = 0; i < checkboxes.length; i++)
-        {
-          if(checkboxes[i].checked)
-            numberOfCheckedItems++;
-        }
-        if(numberOfCheckedItems > 1)
-        {
-          alert("you can't select both options");
-          return false;
-        }
-      }
-
-    </script>
-    
-    <div class="field">
-      <%= form.label :category, "Select category" %>
-      <%= form.collection_select(:category_ids, Category.all, :id, :category_name,
-              { prompt: true }, { class:"custom-select" }) %>
-    </div>
-
-    <div class="field">
-      <%= form.label :found_date %>
-      <%= form.date_select :found_date %>
-    </div>
-
-    <div class="field">
-      <%= form.label :address %>
-      <%= form.text_field :address, data: { target: "maps.field", action: "keydown->maps#keydown" } %>
-    </div>
-
-    <div class="field">
-      <%= form.label :latitude %>
-      <%= form.text_field :latitude, data: { target: "maps.latitude" } %>
-    </div>
-
-    <div class="field">
-      <%= form.label :longitude %>
-      <%= form.text_field :longitude, data: { target: "maps.longitude" } %>
-    </div>
-
-    <div>
-      <div data-target="maps.map" class="map">
-    </div>
-
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-  <% end %>
-
-  <%= link_to 'Back', stuffs_path %>
-</div>
+<script>
+  function ValidateSelection() {
+    var checkboxes = document.getElementsByClassName("check-box");
+    var numberOfCheckedItems = 0;
+    for (var i = 0; i < checkboxes.length; i++)
+    {
+      if(checkboxes[i].checked)
+        numberOfCheckedItems++;
+    }
+    if(numberOfCheckedItems > 1)
+    {
+      alert("you can't select both options");
+      return false;
+    }
+  }
+</script>

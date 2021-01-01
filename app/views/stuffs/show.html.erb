@@ -15,14 +15,15 @@
 
       <div class="col">
         <div class="contact">
-          <p>User: 
+          
+          <div type="button" class="popup btn btn-outline-info" onclick="myFunction()"> <%= fa_icon 'phone' %> Click for phone number
+            <span class="popuptext" id="myPopup"><%= @stuff.user.phone_number %></span>
+          </div>
+          <p id="usernum">User: 
           <% if user_signed_in? %>
             <%= @stuff.user.username if @stuff.user%>
           <% end %>
           </p>
-          <div type="button" class="popup btn btn-outline-info" onclick="myFunction()"> <%= fa_icon 'phone' %> Click for phone number
-            <span class="popuptext" id="myPopup"><%= @stuff.user.phone_number %></span>
-          </div>
 
           <!--<button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">
             <%= fa_icon 'phone' %> Show mobile phone
