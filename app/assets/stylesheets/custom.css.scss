@@ -399,14 +399,15 @@
   height: auto;
   margin: 2%;
 }
-//btn for advance search
-//#btn-adv {
-//  float: right;
-//  margin-right: 0px;
-//  font-family: Arial, Helvetica, sans-serif;
-//  font-size: 12px;
-//  overflow:auto;
-//  position: absolute;
-//  right:    3%;
-//  bottom:   3%;
-//}
+
+
+#description {
+  margin: 0 auto;
+  max-width: 800px;
+  border: solid 2px #ccc;
+  padding: 12px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+

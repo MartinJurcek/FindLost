@@ -1,78 +1,45 @@
-<div class = "show-container">
-  <div class="container">
-    <div class="back-btn">
-    <%= link_to '< Back to home page', stuffs_path %>
-    </div>
-    <div class="form-row w-100">
-      <div class="col">
-        <h2>
-          <%= @stuff.title %>
-        </h2 class="stuff-title-show">
-        <div style="width:40%; height:auto">
-          <%= image_tag(@stuff.image, style:'width:100%') %>
-        </div>
+<div class="container">
+  <div class="row">
+    <div class="col my-5">
+      <h2>
+        <%= @stuff.title %>
+      </h2 class="stuff-title-show">
+      <div style="width:40%; height:auto">
+        <%= image_tag(@stuff.stuff_image) %>
       </div>
 
-      <div class="col">
-        <div class="contact">
-          
-          <div type="button" class="popup btn btn-outline-info" onclick="myFunction()"> <%= fa_icon 'phone' %> Click for phone number
-            <span class="popuptext" id="myPopup"><%= @stuff.user.phone_number %></span>
-          </div>
-          <p id="usernum">User: 
-          <% if user_signed_in? %>
-            <%= @stuff.user.username if @stuff.user%>
-          <% end %>
-          </p>
-
-          <!--<button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">
-            <%= fa_icon 'phone' %> Show mobile phone
-          </button>
-
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Br telefona: <%= @stuff.user.phone_number %></h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  FindLost aplikacija se trudi da vrati izgubljene stvari.
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>-->
-
-        </div>
+      <div type="button" class="popup btn btn-outline-info my-5" onclick="myFunction()"> <%= fa_icon 'phone' %> Click for phone number
+        <span class="popuptext" id="myPopup"><%= @stuff.user.phone_number %></span>
       </div>
-    </div>
-    <div class="container-desc">
-      <strong>Description:</strong><br>
-      <p style="padding:5%">
-        <%= @stuff.description %>
+      <p id="usernum" class="my-1">User: 
+      <% if user_signed_in? %>
+        <%= @stuff.user.username if @stuff.user%>
+      <% end %>
       </p>
+
+      <div class="my-3">
+        <p>Address:
+        <%= @stuff.address %></p>
+      </div>
+
     </div>
-
-    <div>
-      <p>Address:</p>
-      <%= @stuff.address %>
+    <div class="col my-5">
+      <div class="card">
+        <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=16&size=400x400&markers=#{@stuff.latitude},#{@stuff.longitude}&key=#{ Rails.application.credentials.aws[:access_key_id] }", alt: "Map" %>
+      </div>
     </div>
-
-    
-
-    <p>
-      <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=16&size=400x300&markers=#{@stuff.latitude},#{@stuff.longitude}&key=#{ Rails.application.credentials.aws[:access_key_id] }", alt: "Map" %>
-    </p>
-
-    <% if user_signed_in? && (@stuff.user == current_user || current_user.admin?) %>
-      <%= link_to 'Edit', edit_stuff_path(@stuff) %>
-    <% end %> 
   </div>
+  <p>Description:</p>
+  <div class="container my-5" id="description">
+    
+    <p style="padding:3%">
+      <%= @stuff.description %>
+    </p>
+  </div>
+  <% if user_signed_in? && (@stuff.user == current_user || current_user.admin?) %>
+    <%= link_to 'Edit', edit_stuff_path(@stuff) %>
+  <% end %>
+  
 </div>
 
 <script>
@@ -81,4 +48,5 @@ function myFunction() {
   var popup = document.getElementById("myPopup");
   popup.classList.toggle("show");
 }
+
 </script>
