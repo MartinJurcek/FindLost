@@ -110,8 +110,6 @@
   max-width: 500px;
 }
  
-
-
 //categories view
 #category-index {
   max-width: 500px;
@@ -182,21 +180,6 @@
   margin-bottom: 5%;
   margin-top: 2%;
 }
-
-//_search
-//#search-line {
-//  text-align: center;
-//}
-
-//popup for advance search
-//#collapseExample {
-//  margin-bottom: 4em;
-//}
-//#advance-search {
-//  width: auto;
-//  height: 200px;
-//  justify-content: center;
-//}
 
 /* Popup container for phone number */
 .popup {
@@ -359,7 +342,7 @@
   border-radius: 8px;
 }
 
-
+//for buttons my acc and new stuff
 .list-border a {
   border: none;
 }
@@ -376,12 +359,8 @@
   text-decoration:none;
   color: black;
 }
-//.icon-position a:hover {
-//  color: gainsboro;
-//}
 
-
-
+//not static
 .map {
   width: 100%;
   min-height: 400px;
@@ -392,15 +371,13 @@
   margin-top: 10%;
 }
 
-
-
 //advance search div size
 #advance-search {
   height: auto;
   margin: 2%;
 }
 
-
+//shop stuff page description
 #description {
   margin: 0 auto;
   max-width: 800px;
@@ -410,4 +387,3 @@
   word-wrap: break-word;
   hyphens: auto;
 }
-

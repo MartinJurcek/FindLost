@@ -61,6 +61,7 @@
         <%= form.label :address %>
         <%= form.text_field :address, data: { target: "maps.field", action: "keydown->maps#keydown" }, class:"form-control" %>
       </div>
+      
       <div class="field">
           <%= form.text_field :latitude, data: { target: "maps.latitude" }, class:"form-control", type:"hidden" %>
       </div>
