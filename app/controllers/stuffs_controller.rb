@@ -22,6 +22,7 @@ class StuffsController < ApplicationController
     @stuffs = @stuffs.found(params[:value1]).paginate(page: params[:page], per_page: 14) if params[:value1].present?
     @stuffs = @stuffs.lost(params[:value2]).paginate(page: params[:page], per_page: 14) if params[:value2].present?
     @stuffs = @stuffs.cat(params[:category_id]).paginate(page: params[:page], per_page: 14) if params[:category_id].present?
+    @stuffs = @stuffs.between(params[:start_date], params[:end_date]).paginate(page: params[:page], per_page: 14) if params[:start_date].present? and params[:end_date].present?
 
 
 

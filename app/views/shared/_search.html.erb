@@ -37,7 +37,7 @@
             <p>Lost <%= check_box_tag('value2', "Lost") %></p>      
             <p>Select category: <%= select_tag "category_id", options_from_collection_for_select(Category.all, :id, :category_name), class:"form-control", prompt: "Select category" %></p>
             <div class="row">
-              <p>Date from: <%= date_field_tag('date_from') %></p> <p>Date to: <%= date_field_tag('date_to') %></p><br>
+              <p>Date from: <%= date_field_tag('start_date') %></p> <p>Date to: <%= date_field_tag('end_date') %></p><br>
             </div>
           <button id="btn-adv" class="btn btn-outline-success">Search</button>
           </div>
