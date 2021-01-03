@@ -8,11 +8,6 @@ class Stuff < ApplicationRecord
   validate :image_type
   after_commit :add_default_image, on: %i[create update]
   attr_accessor :found_date
-  
-  
-  #def self.search(search)
-  #  where('title LIKE ? OR address LIKE ?', "%#{search}%", "%#{search}%") #|| where('title LIKE ? AND address LIKE ?', "%#{search}%", "%#{search}%")
-  #end
 
   #search with word
   def self.search(search)
@@ -47,16 +42,6 @@ class Stuff < ApplicationRecord
     stuff = Stuff.joins(:categories).where('categories.id LIKE ?', "%#{cat}%")
     return stuff
   end
-
-  #def self.between(start_date, end_date)
-  #  if start_date.present? and end_date.present?
-  #    where('found_date >= ? AND found_date <= ?', start_date, end_date)
-  #  elsif start_date.present?
-  #    where('found_date = ?', start_date)
-  #  else
-  #    Stuff.all
-  #  end
-  #end
 
   def self.between(start_date, end_date)
     stuff = all

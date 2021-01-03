@@ -8,13 +8,6 @@ class StuffsController < ApplicationController
   # GET /stuffs
   # GET /stuffs.json
   def index
-    #if params[:search].present?
-    #  @stuffs = Stuff.search(params[:search]).paginate(page: params[:page], per_page: 14)
-    #elsif 
-    #  @stuffs = Stuff.search(params[:location]).paginate(page: params[:page], per_page: 14)
-    #else
-    #  @stuffs = Stuff.all.paginate(page: params[:page], per_page: 14)
-    #end
 
     @stuffs = Stuff.all.paginate(page: params[:page], per_page: 14)
     @stuffs = @stuffs.search(params[:search]).paginate(page: params[:page], per_page: 14) if params[:search].present?
@@ -24,30 +17,7 @@ class StuffsController < ApplicationController
     @stuffs = @stuffs.cat(params[:category_id]).paginate(page: params[:page], per_page: 14) if params[:category_id].present?
     @stuffs = @stuffs.between(params[:start_date], params[:end_date]).paginate(page: params[:page], per_page: 14) if params[:start_date].present? and params[:end_date].present?
 
-
-
-    
-    #treba da se namesti da sve radi zajedno
-    #if params[:value1].present?
-    #  @stuffs = Stuff.found_stuf().paginate(page: params[:page], per_page: 14)
-    #elsif params[:value2].present?
-    #  @stuffs = Stuff.lost_stuf().paginate(page: params[:page], per_page: 14)
-    #else
-    #  @stuffs = Stuff.all.paginate(page: params[:page], per_page: 14)
-    #end
-  end
-
-  #def search
-  #  query = params[:search]
-#
-  #  results = Stuff.where('title LIKE ?', "%#{query}%")
-  #  if params[:filter] == "Location"
-  #    @stuffs = results
-  #  else
-  #    @stuffs = results.where('address LIKE ?', "%#{query}%")
-#
-  #  end
-  #end 
+  end 
 
   # GET /stuffs/1
   # GET /stuffs/1.json
