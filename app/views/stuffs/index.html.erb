@@ -1,6 +1,5 @@
 
-<!--<%= link_to 'New Stuff', new_stuff_path %>-->
-<div>
+
   <div class="container col-sm-10">
     <div class="row">
       <div class="col-sm-2 my-5">
@@ -37,11 +36,12 @@
       </div>
     </div>
   </div>
+  <% if @stuffs.count > 14 %>
+    <div class="container rounded apple_pagination mb-4 my-5" id="pagination-container">
+      <%= will_paginate @stuffs, :container => false %>
+    </div>
+  <% end %>
 
-  <div class="container rounded apple_pagination mb-4 my-5" id="pagination-container">
-    <%= will_paginate @stuffs, :container => false %>
-  </div>
-</div>
 <%= render 'shared/footer' %>
 
 

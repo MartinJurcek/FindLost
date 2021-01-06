@@ -56,9 +56,11 @@
       <div class="col my-5">
         <h1 class="text-center">Your Items</h1>
         <%= render 'stuffs/stuffs'%>
-        <div class="container rounded apple_pagination mb-4 my-5" id="pagination-container">
-          <%= will_paginate @stuffs, :container => false %>
-        </div>
+        <% if @stuffs.count > 3 %>
+          <div class="container rounded apple_pagination mb-4 my-5" id="pagination-container">
+            <%= will_paginate @stuffs, :container => false %>
+          </div>
+        <% end %>
       </div>
 
     </div>

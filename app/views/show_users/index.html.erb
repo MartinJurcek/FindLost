@@ -1,11 +1,16 @@
-<div class="show-users">
-  <% @users.each do |user| %>
-    <%= user.username %><br/>
-    <%= user.email %><br/>
+<h1 class="text-center">Users</h1>
+<div class="d-flex flex-wrap">
+
+<% @users.each do |user| %>
+  <div class="container card text-center shadow mb-5 my-5 rounded" style="width: 540px;">
+  <div class="card-body">
+    <p class="my-1"><strong>Username: </strong><%= user.username %></p><br/>
+    <p class="my-1"><strong>E-mail: </strong><%= user.email %></p><br/>
     <% if current_user.admin? %>
-      <%= link_to 'Destroy', show_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %><br/>
+      <p class="my-1"><%= link_to 'Destroy', show_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class:"fa fa-trash-o btn btn-danger" %></p><br/>
     <% end %>
-    <small>Joined <%= time_ago_in_words(user.created_at) %> ago</small>
-  <br/><br/>
-  <% end %>
+    <p class="card-footer"><small>Joined <%= time_ago_in_words(user.created_at) %> ago</small></p>
+    </div>
+  </div>
+<% end %>
 </div>

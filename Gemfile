@@ -31,6 +31,7 @@ gem 'will_paginate'
 # Dropzone for images. Read more: https://github.com/ncuesta/dropzonejs-rails
 gem 'dropzonejs-rails'
 gem "mini_magick"
+gem 'exifr'
 
 
 # Use Active Storage variant

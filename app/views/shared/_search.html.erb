@@ -8,7 +8,6 @@
                         <div class="row no-gutters">
                             <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                                 <input type="text" id="location" list="json-datalist" placeholder="e.g. datalist"  name="location">
-                                <!--<%= text_field_tag :ajax, params[:search], list:"json-datalist", placeholder: "e.g. datalist", onChange:'get_data()' %>-->
                                 <datalist id="json-datalist"></datalist>
                             </div>
                             <div class="col-lg-7 col-md-5 col-sm-12 p-0">
@@ -40,6 +39,7 @@
               <p>Date from: <%= date_field_tag('start_date') %></p> <p>Date to: <%= date_field_tag('end_date') %></p><br>
             </div>
           <button id="btn-adv" class="btn btn-outline-success">Search</button>
+          <%= link_to "Clear Search", request.path, class:"cancel-button" %>
           </div>
         </div>
     </div>
@@ -84,8 +84,7 @@ request.open('GET', 'https://data-json1.s3-eu-west-1.amazonaws.com/rs.json', tru
 request.send();
 </script>
 
-
-
+<!--value for json select location-->
 <script>
 function get_data(){
   var val = document.getElementById("location").value;

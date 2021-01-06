@@ -2,17 +2,16 @@
 
 <% if user_signed_in? && current_user.admin? %>
   <div class="text-center mt-4">
-    <%= link_to "Edit category name", edit_category_path(@category), class: "btn btn-outline-info" %>
+    <%= link_to "Edit category name", edit_category_path(@category), class: "btn btn-outline-info my-3" %>
   </div>
 <% end %>
 
 <%= render 'stuffs/stuffs'%>
 
-<div class="text-center">
+<div class="text-center my-5">
   <%= link_to 'Cancel and return to categories listing', categories_path %>
 </div>
 
 <div class="container rounded apple_pagination mb-4" id="pagination-container">
   <%= will_paginate @stuffs, :container => false %>
 </div>
-
