@@ -7,14 +7,14 @@ class StuffsController < ApplicationController
   # GET /stuffs
   # GET /stuffs.json
   def index
-    @stuffs = Stuff.all.paginate(page: params[:page], per_page: 14)
+    @stuffs = Stuff.all.order("created_at DESC").paginate(page: params[:page], per_page: 14)
     
-    @stuffs = @stuffs.search(params[:search]).paginate(page: params[:page], per_page: 14) if params[:search].present?
-    @stuffs = @stuffs.searchLoc(params[:location]).paginate(page: params[:page], per_page: 14) if params[:location].present?
-    @stuffs = @stuffs.found(params[:value1]).paginate(page: params[:page], per_page: 14) if params[:value1].present?
-    @stuffs = @stuffs.lost(params[:value2]).paginate(page: params[:page], per_page: 14) if params[:value2].present?
-    @stuffs = @stuffs.cat(params[:category_id]).paginate(page: params[:page], per_page: 14) if params[:category_id].present?
-    @stuffs = @stuffs.between(params[:start_date], params[:end_date]).paginate(page: params[:page], per_page: 14) if params[:start_date].present? and params[:end_date].present?
+    @stuffs = @stuffs.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 14) if params[:search].present?
+    @stuffs = @stuffs.searchLoc(params[:location]).order("created_at DESC").paginate(page: params[:page], per_page: 14) if params[:location].present?
+    @stuffs = @stuffs.found(params[:value1]).order("created_at DESC").paginate(page: params[:page], per_page: 14) if params[:value1].present?
+    @stuffs = @stuffs.lost(params[:value2]).order("created_at DESC").paginate(page: params[:page], per_page: 14) if params[:value2].present?
+    @stuffs = @stuffs.cat(params[:category_id]).order("created_at DESC").paginate(page: params[:page], per_page: 14) if params[:category_id].present?
+    @stuffs = @stuffs.between(params[:start_date], params[:end_date]).order("created_at DESC").paginate(page: params[:page], per_page: 14) if params[:start_date].present? and params[:end_date].present?
   end 
 
   # GET /stuffs/1

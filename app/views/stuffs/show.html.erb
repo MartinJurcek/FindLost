@@ -23,7 +23,17 @@
       </div>
 
       <div class="my-3">
-        <p><strong>Date Foun/Lost:</strong>
+        <p><strong>Image longitude/latitude:</strong>
+        <% if @stuff.image.metadata['longitude'].present? %>
+          <%= @stuff.image.metadata['longitude'] %>
+          <%= @stuff.image.metadata['latitude'] %></p>
+        <% else %>
+          Image don't have latitude and longitude
+        <% end %>
+      </div>
+
+      <div class="my-3">
+        <p><strong>Date Found/Lost:</strong>
         <%= @stuff.found_date %></p>
       </div>
 

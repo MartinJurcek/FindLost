@@ -20,6 +20,7 @@ export default class extends Controller {
   }
 
   // Private
+  // Hide button for upload
   hideFileInput() {
     this.inputTarget.disabled = true;
     this.inputTarget.style.display = "none";
@@ -54,7 +55,7 @@ export default class extends Controller {
   }
 
   get maxFileSize() {
-    return this.data.get("maxFileSize") || 256;
+    return this.data.get("maxFileSize") || 1024;
   }
 
   get acceptedFiles() {

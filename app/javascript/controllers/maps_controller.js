@@ -13,6 +13,7 @@ export default class extends Controller {
     this.map()
     this.marker()
     this.autocomplete()
+    //this can delete
     console.log('init')
   }
 
@@ -20,7 +21,7 @@ export default class extends Controller {
     if(this._map == undefined) {
       this._map = new google.maps.Map(this.mapTarget, {
         center: new google.maps.LatLng(44, 21),
-        zoom: 7
+        zoom: 5
       })
     }
     return this._map

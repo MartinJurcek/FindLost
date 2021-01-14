@@ -32,6 +32,7 @@ gem 'will_paginate'
 gem 'dropzonejs-rails'
 gem "mini_magick"
 gem 'exifr'
+gem 'geocoder'
 
 
 # Use Active Storage variant
