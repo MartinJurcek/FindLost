@@ -187,6 +187,13 @@
   display: inline-block;
   cursor: pointer;
 }
+.popup a {
+  text-decoration: none;
+}
+.popup a:hover {
+  text-decoration: none;
+}
+
 /* The actual popup (appears on top) */
 .popup .popuptext {
   visibility: hidden;

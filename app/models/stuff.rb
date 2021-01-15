@@ -7,19 +7,6 @@ class Stuff < ApplicationRecord
   validates :description, presence: true, length: {maximum: 300}
   validate :image_type
   after_commit :add_default_image, on: %i[create update]
-  geocoded_by :address
-  reverse_geocoded_by :latitude, :longitude
-  after_validation :geocode, :reverse_geocode
-
-  
-
-  def latitude
-    image.metadata['latitude']
-  end
-
-  def longitude
-    image.metadata['longitude']
-  end
 
   #search with word
   def self.search(search)

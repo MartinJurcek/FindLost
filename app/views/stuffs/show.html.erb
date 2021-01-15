@@ -8,7 +8,8 @@
         <%= image_tag(@stuff.stuff_image) %>
       </div>
 
-      <div type="button" class="popup btn btn-outline-info my-5" onclick="myFunction()"> <%= fa_icon 'phone' %> Click for phone number
+      <div type="button" class="popup btn btn-outline-info my-5" onclick="myFunction()"> 
+        <%= fa_icon 'phone' %> <a class="call-btn" href="tel:<%= @stuff.user.phone_number %>">click for call</a>
         <span class="popuptext" id="myPopup"><%= @stuff.user.phone_number %></span>
       </div>
       <p id="usernum" class="my-1"><strong>User: </strong>
@@ -18,14 +19,14 @@
       </p>
 
       <div class="my-3">
-        <p><strong>Address:</strong>
-        <%= @stuff.address %></p>
+        <strong>Address:</strong>
+        <p><%= @stuff.address %></p>
       </div>
 
       <div class="my-3">
-        <p><strong>Image longitude/latitude:</strong>
+        <strong class="d-inline">Image longitude/latitude:</strong>
         <% if @stuff.image.metadata['longitude'].present? %>
-          <%= @stuff.image.metadata['longitude'] %>
+          <p id = "latlng"><%= @stuff.image.metadata['longitude'] %> ,
           <%= @stuff.image.metadata['latitude'] %></p>
         <% else %>
           Image don't have latitude and longitude
@@ -33,8 +34,8 @@
       </div>
 
       <div class="my-3">
-        <p><strong>Date Found/Lost:</strong>
-        <%= @stuff.found_date %></p>
+        <strong>Date Found/Lost:</strong>
+        <p><%= @stuff.found_date %></p>
       </div>
 
     </div>
@@ -63,5 +64,19 @@ function myFunction() {
   var popup = document.getElementById("myPopup");
   popup.classList.toggle("show");
 }
+
+</script>
+
+<script>
+$.getJSON('https://nominatim.openstreetmap.org/reverse', {
+    lat: <%= @stuff.image.metadata['latitude'] %>,
+    lon: <%= @stuff.image.metadata['longitude'] %>,
+    format: 'json',
+}, function (result) {
+    console.log(result);
+    var out = "";
+    out += '<p>' + result.address.country + ', ' + result.address.city + ', ' + result.address.road + ', ' + result.address.house_number + '</p>';
+    document.getElementById("latlng").innerHTML = out;
+}); 
 
 </script>
