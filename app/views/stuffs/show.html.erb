@@ -24,7 +24,7 @@
       </div>
 
       <div class="my-3">
-        <strong class="d-inline">Image longitude/latitude:</strong>
+        <strong class="d-inline">Location of captured image:</strong>
         <% if @stuff.image.metadata['longitude'].present? %>
           <p id = "latlng"><%= @stuff.image.metadata['longitude'] %> ,
           <%= @stuff.image.metadata['latitude'] %></p>
@@ -46,8 +46,7 @@
     </div>
   </div>
   <p><strong>Description:</strong></p>
-  <div class="container my-5" id="description">
-    
+  <div class="container my-5" id="description" style="background-color: white">
     <p style="padding:3%">
       <%= @stuff.description %>
     </p>
@@ -71,12 +70,11 @@ function myFunction() {
 $.getJSON('https://nominatim.openstreetmap.org/reverse', {
     lat: <%= @stuff.image.metadata['latitude'] %>,
     lon: <%= @stuff.image.metadata['longitude'] %>,
-    format: 'json',
+    format: 'json'
 }, function (result) {
     console.log(result);
     var out = "";
-    out += '<p>' + result.address.country + ', ' + result.address.city + ', ' + result.address.road + ', ' + result.address.house_number + '</p>';
+    out += '<p>' + result.address.country + ', ' + result.address.city + '</p>';
     document.getElementById("latlng").innerHTML = out;
 }); 
-
 </script>

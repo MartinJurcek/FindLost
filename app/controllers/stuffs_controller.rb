@@ -15,6 +15,8 @@ class StuffsController < ApplicationController
     @stuffs = @stuffs.lost(params[:value2]).order("created_at DESC").paginate(page: params[:page], per_page: 14) if params[:value2].present?
     @stuffs = @stuffs.cat(params[:category_id]).order("created_at DESC").paginate(page: params[:page], per_page: 14) if params[:category_id].present?
     @stuffs = @stuffs.between(params[:start_date], params[:end_date]).order("created_at DESC").paginate(page: params[:page], per_page: 14) if params[:start_date].present? and params[:end_date].present?
+
+    flash[:alert] = "No result found" if @stuffs.nil? || @stuffs.blank?
   end 
 
   # GET /stuffs/1
