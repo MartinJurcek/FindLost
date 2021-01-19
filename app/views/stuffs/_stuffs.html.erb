@@ -10,6 +10,11 @@
             <h5 class="card-title"><%= stuff.title %></h5>
             <p class="card-text"><%= stuff.description.first(40) %></p>
             <p><%= link_to 'Show', stuff, class:"fa fa-eye btn btn-info" %></p>
+            <% if stuff.find %>
+              <p><%= link_to 'found', find_stuffs_path, class:"btn btn-light" %></p>
+            <% else %>
+              <p><%= link_to 'lost', lost_stuffs_path, class:"btn btn-light" %></p>
+            <% end %>
             <p class="card-footer text-center"><small class="text-muted">Posted: <%= time_ago_in_words(stuff.created_at) %> ago</small></p>
           </div>
         </div>

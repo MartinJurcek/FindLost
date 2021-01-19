@@ -15,6 +15,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
 
+  validates :phone_number, :presence => true,
+                           :numericality => true
 
 
   def full_name

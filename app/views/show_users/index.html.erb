@@ -6,6 +6,7 @@
   <div class="card-body">
     <p class="my-1"><strong>Username: </strong><%= user.username %></p><br/>
     <p class="my-1"><strong>E-mail: </strong><%= user.email %></p><br/>
+    <p class="my-1"><strong>Mobile: </strong><%= user.phone_number %></p><br/>
     <% if current_user.admin? %>
       <p class="my-1"><%= link_to 'Destroy', show_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class:"fa fa-trash-o btn btn-danger" %></p><br/>
     <% end %>

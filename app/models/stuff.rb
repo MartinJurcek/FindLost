@@ -56,16 +56,6 @@ class Stuff < ApplicationRecord
     end
   end
 
-  #def image_location
-  #  results = Geocoder.search(image.metadata['latitude'] && image.metadata['longitude'])
-  #  results.first.address
-  #end
-#
-  #def address
-  #  [street, city, state, country].compact.join(', ')
-  #end
-  
-
   private
 
   def image_type
