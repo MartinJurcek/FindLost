@@ -7,9 +7,9 @@
     <div class="col">
       <h1>Editing Stuff</h1>
       <div class="field my-3">
-          <%= form.label :title %>
-          <%= form.text_field :title, class:"form-control", placeholder:"Title" %>
-        </div>
+        <%= form.label :title %>
+        <%= form.text_field :title, class:"form-control", placeholder:"Title" %>
+      </div>
 
       <div class="field my-3">
         <%= form.label :description %>
@@ -34,15 +34,12 @@
       <div class="field my-3">
         <%= form.label :find %>
         <%= form.check_box :find, class: "check-box", onclick: "return ValidateSelection();", value: "1" %>
-        <!--<input type="checkbox" name="stuff[find]" value="true" class="type" value="1" onclick= "return ValidateSelection();">-->
       </div>
 
       <div class="field my-3">
         <%= form.label :lost %>
         <%= form.check_box :lost, class: "check-box", onclick: "return ValidateSelection();", value: "2" %>
-        <!--<input type="checkbox" name="stuff[lost]" value="false" class="type" value="2" onclick= "return ValidateSelection();">-->
       </div>
-
 
       <div class="field my-3">
         <%= form.label :category, "Select category" %>

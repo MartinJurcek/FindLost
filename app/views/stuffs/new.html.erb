@@ -28,15 +28,13 @@
         </div>
 
         <div class="field my-3">
-          <%= form.label :find %>
+          <%= form.label :found %>
           <%= form.check_box :find, class: "check-box", onclick: "return ValidateSelection();", value: "1" %>
-          <!--<input type="checkbox" name="stuff[find]" value="true" class="type" value="1" onclick= "return ValidateSelection();">-->
         </div>
     
         <div class="field my-3">
           <%= form.label :lost %>
           <%= form.check_box :lost, class: "check-box", onclick: "return ValidateSelection();", value: "2" %>
-          <!--<input type="checkbox" name="stuff[lost]" value="false" class="type" value="2" onclick= "return ValidateSelection();">-->
         </div>
 
         <div class="field my-3">
@@ -49,8 +47,6 @@
           <%= form.label :found_date %>
           <%= form.date_select :found_date, class:"form-control" %>
         </div>
-
-        
       </div>
       <div class="col">
         <div class="card my-5">
@@ -72,7 +68,7 @@
       
       <div class="field my-3">
         <%= form.label :image_location %>
-        <%= form.check_box :image_location, class: "check-box" %>
+        <%= form.check_box :image_location %>
       </div>
         
       <div class="actions my-3">
@@ -98,11 +94,4 @@
       return false;
     }
   }
-</script>
-
-
-<script>
-$('#stuff_image_location').change(function() {
-    $('#text').toggle(this.checked);
-});
 </script>

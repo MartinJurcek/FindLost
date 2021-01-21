@@ -7,6 +7,15 @@ class Stuff < ApplicationRecord
   validates :description, presence: true, length: {maximum: 300}
   validate :image_type
   after_commit :add_default_image, on: %i[create update]
+  validate :time_or_money
+
+  def bothOpt 
+    if find == false && lost == false
+      'must select one'
+    else
+
+    end
+  end
 
   #search with word
   def self.search(search)
@@ -78,6 +87,12 @@ class Stuff < ApplicationRecord
         filename: 'image-not-found.png',
         content_type: 'image/png'
       )
+    end
+  end
+
+  def time_or_money
+    if find.blank? && lost.blank?
+      errors[:base] << "Must select found or lost"
     end
   end
 end
