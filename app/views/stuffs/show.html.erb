@@ -23,14 +23,18 @@
         <p><%= @stuff.address %></p>
       </div>
 
-      <div class="my-3">
-        <strong class="d-inline">Location of captured image:</strong>
-        <% if @stuff.image.metadata['longitude'].present? %>
-          <p id = "latlng"></p>
-        <% else %>
-          Image don't have latitude and longitude
-        <% end %>
-      </div>
+      <% if @stuff.image_location %>
+        <div class="my-3" id="text" onload="">
+          <strong class="d-inline">Location of captured image:</strong>
+          <% if @stuff.image.metadata['longitude'].present? %>
+            <p id = "latlng"></p>
+          <% else %>
+            Image don't have latitude and longitude
+          <% end %>
+        </div>
+      <% else %>
+
+      <% end %>
 
       <div class="my-3">
         <strong>Date Found/Lost:</strong>
@@ -66,6 +70,7 @@ function myFunction() {
   var popup = document.getElementById("myPopup");
   popup.classList.toggle("show");
 }
+
 </script>
 
 <script>

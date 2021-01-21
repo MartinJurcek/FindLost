@@ -54,8 +54,6 @@
         <%= form.label :found_date %>
         <%= form.date_select :found_date %>
       </div>  
-
-      
     </div>
 
     <div class="col">
@@ -74,6 +72,11 @@
       
       <div class="field">
         <%= form.text_field :longitude, data: { target: "maps.longitude" }, class:"form-control", type:"hidden" %>
+      </div>
+
+      <div class="field my-3">
+        <%= form.label :image_location %>
+        <%= form.check_box :image_location, class: "check-box" %>
       </div>
 
       <div class="actions my-3">

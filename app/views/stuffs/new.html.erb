@@ -69,6 +69,11 @@
       <div class="field">
         <%= form.text_field :longitude, data: { target: "maps.longitude" }, class:"form-control", type:"hidden" %>
       </div>
+      
+      <div class="field my-3">
+        <%= form.label :image_location %>
+        <%= form.check_box :image_location, class: "check-box" %>
+      </div>
         
       <div class="actions my-3">
         <%= form.submit class:"btn btn-primary" %>
@@ -93,4 +98,11 @@
       return false;
     }
   }
+</script>
+
+
+<script>
+$('#stuff_image_location').change(function() {
+    $('#text').toggle(this.checked);
+});
 </script>
