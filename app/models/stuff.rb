@@ -9,14 +9,6 @@ class Stuff < ApplicationRecord
   after_commit :add_default_image, on: %i[create update]
   validate :time_or_money
 
-  def bothOpt 
-    if find == false && lost == false
-      'must select one'
-    else
-
-    end
-  end
-
   #search with word
   def self.search(search)
     stuff = all

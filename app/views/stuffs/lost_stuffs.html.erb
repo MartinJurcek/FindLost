@@ -1,8 +1,8 @@
 <h1 class="text-center my-5">Lost stuffs</h1>
 
-<div class="d-flex flex-wrap justify-content-start">
+<div class="d-flex flex-wrap">
   <% Stuff.lost_stuf.each do |stuff| %>
-    <div class="card mx-auto mb-3" style="width: 540px;">
+    <div class="card container mb-3" style="width: 540px;">
       <div class="row g-0">
         <div class="col-md-4">
           <%= image_tag(stuff.stuff_image) %>
@@ -10,9 +10,14 @@
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title"><%= stuff.title %></h5>
-            <p class="card-text"><%= stuff.description.first(80) %></p>
-            <p><%= link_to 'Show', stuff, class:"btn btn-info" %></p>
-            <p class="card-text"><small class="text-muted">Posted: <%= time_ago_in_words(stuff.created_at) %> ago</small></p>
+            <p class="card-text"><%= stuff.description.first(40) %></p>
+            <%= link_to 'Show', stuff, class:"fa fa-eye btn btn-info my-3" %>
+            <% if stuff.find %>
+              <%= link_to 'found', find_stuffs_path, class:"btn btn-success" %>
+            <% else %>
+              <%= link_to 'lost', lost_stuffs_path, class:"btn btn-warning" %>
+            <% end %>
+            <p class="card-footer text-center"><small class="text-muted">Posted: <%= time_ago_in_words(stuff.created_at) %> ago</small></p>
           </div>
         </div>
       </div>
