@@ -7,7 +7,7 @@ class Stuff < ApplicationRecord
   validates :description, presence: true, length: {maximum: 300}
   validate :image_type
   after_commit :add_default_image, on: %i[create update]
-  validate :time_or_money
+  validate :found_or_lost
 
   #search with word
   def self.search(search)
@@ -82,7 +82,7 @@ class Stuff < ApplicationRecord
     end
   end
 
-  def time_or_money
+  def found_or_lost
     if find.blank? && lost.blank?
       errors[:base] << "Must select found or lost"
     end

@@ -33,8 +33,6 @@ gem 'dropzonejs-rails'
 gem "mini_magick"
 gem 'exifr'
 gem 'geocoder'
-gem 'cyrillizer'
-
 
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'

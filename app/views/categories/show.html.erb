@@ -1,4 +1,4 @@
-<h1 class="text-center">Category: <%= @category.category_name %></h1>
+<h1 class="text-center my-5">Category: <%= @category.category_name %></h1>
 
 <% if user_signed_in? && current_user.admin? %>
   <div class="text-center mt-4">
@@ -12,6 +12,8 @@
   <%= link_to 'Cancel and return to categories listing', categories_path %>
 </div>
 
-<div class="container rounded apple_pagination mb-4" id="pagination-container">
-  <%= will_paginate @stuffs, :container => false %>
-</div>
+<% if @stuffs.count > 14 %>
+  <div class="container rounded apple_pagination mb-4" id="pagination-container">
+    <%= will_paginate @stuffs, :container => false %>
+  </div>
+<% end%>

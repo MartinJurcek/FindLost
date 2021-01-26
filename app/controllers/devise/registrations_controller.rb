@@ -35,7 +35,7 @@ class Devise::RegistrationsController < DeviseController
 
   # GET /resource/edit
   def edit
-    @stuffs = @user.stuffs.paginate(page: params[:page], per_page: 3)
+    @stuffs = @user.stuffs.paginate(page: params[:page], per_page: 2)
     render :edit
   end
 
