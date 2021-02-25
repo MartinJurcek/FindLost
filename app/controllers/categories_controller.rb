@@ -21,7 +21,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @stuffs = @category.stuffs.paginate(page: params[:page], per_page: 5)
+    @stuffs = @category.stuffs.paginate(page: params[:page], per_page: 6)
   end
 
   def edit 
